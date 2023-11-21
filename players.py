@@ -72,14 +72,14 @@ class Entity:
     
     #UTILISATION EXCEPTIONNELLE
 
-    def change_maxhp(self, hp_change):
-        self.max_hp -= hp_change
+    def change_maxhp(self, hp_amount):
+        self.max_hp -= hp_amount
         if self.max_hp <= 0:
             self.max_hp = 1
             print("HP minimum atteint (1)")
         
-    def change_hp(self, hp_change):
-        self.hp += hp_change
+    def change_hp(self, hp_amount):
+        self.hp += hp_amount
         if self.hp > self.max_hp:
             self.hp = self.max_hp
         
@@ -88,14 +88,14 @@ class Entity:
             self.hp = 1
     
     
-    def change_atk(self, atk_change):
-        self.atk += atk_change
+    def change_atk(self, atk_amount):
+        self.atk += atk_amount
         if self.atk <= 0:
             self.afk = 1
             print("Attaque minimale atteinte (1)")
                 
-    def change_def(self, def_change):
-        self.defense += def_change
+    def change_def(self, def_amount):
+        self.defense += def_amount
         if self.defense <= 0:
             self.defense = 1
             print("Defense minimale atteint (1)")
