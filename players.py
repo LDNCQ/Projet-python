@@ -60,6 +60,8 @@ class Entity:
         else:
             print(f"{self.name} ne possède pas {item.name} dans son inventaire.")
             
+    #test
+            
     
     
     
