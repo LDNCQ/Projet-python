@@ -1,8 +1,10 @@
-class Player:
+from items import *
+class Entity:
+    
     #name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
     #p1.max_hp, p1.hp, p1.atk, p1.defense, p1.xp, p1.xp_until_lvlup, p1.level
     
-    def __init__(self, name : str, max_hp, hp, atk, defense, xp, xp_until_lvlup, level):
+    def player(self, name : str, max_hp, hp, atk, defense, xp, xp_until_lvlup, level):
         self.name = name
         self.max_hp = max_hp
         self.hp = hp
@@ -11,18 +13,29 @@ class Player:
         self.xp = xp
         self.xp_until_lvlup = xp_until_lvlup
         self.level = level
+        self.inventory = []
+        while self.xp >= self.xp_until_lvlup:
+            self.level_up()
+            
+    
+    """def monster(self, name : str, max_hp, hp, atk, defense)"""
         
-    def show_stats(self, max_hp, hp, atk, defense, xp, xp_until_lvlup, level):
-        print("Stats")
-        print("------------")
-        print(f"HP : {hp}/{max_hp}")
-        print(f"Attack : {atk}")
-        print(f"Defense : {defense}")
-        print(f"XP : {xp}/{xp_until_lvlup}")
-        print(f"Level : {level}")
 
         
-    def level_up(self, max_hp, hp, atk, defense, xp, xp_until_lvlup, level):
+    def show_stats(self):
+        print("Stats")
+        print("------------")
+        print(f"HP: {self.hp}/{self.max_hp}")
+        print(f"Attaque: {self.atk}")
+        print(f"Defense: {self.defense}")
+        print(f"XP: {self.xp}/{self.xp_until_lvlup}")
+        print(f"Level: {self.level}")
+        print("Objets disponibles :")
+        for i in range(len(self.inventory)):
+            print(self.inventory[i].name)
+
+        
+    def level_up(self):
         self.max_hp += 4
         self.hp = self.max_hp
         self.atk += 3
@@ -30,15 +43,22 @@ class Player:
         self.xp = 0
         self.xp_until_lvlup += 6
         self.level += 1
-        print("You leveled up !")
+        print(f"{self.name} a gagné un niveau !")
         
     
     
-    def xp_gain(self, max_hp, hp, atk, defense, xp, xp_until_lvlup, level, xp_gained):
+    def xp_gain(self, xp_gained):
         self.xp += xp_gained
-        if self.xp > self.xp_until_lvlup:
-            self.xp = self.xp_until_lvlup
-            self.level_up(max_hp, hp, atk, defense, xp, xp_until_lvlup, level)
+        while self.xp >= self.xp_until_lvlup:
+            self.level_up()
+        
+        
+    def use_item(self, item):
+        if item in self.inventory:
+            item.use(self)
+            self.inventory.remove(item)
+        else:
+            print(f"{self.name} ne possède pas {item.name} dans son inventaire.")
             
     
     
@@ -49,8 +69,35 @@ class Player:
     
     
     #UTILISATION EXCEPTIONNELLE
-    def increase_maxhp(self, max_hp, hp_gained):
-        self.max_hp += hp_gained
+
+    def change_maxhp(self, hp_change):
+        self.max_hp -= hp_change
+        if self.max_hp <= 0:
+            self.max_hp = 1
+            print("HP minimum atteint (1)")
+        
+    def change_hp(self, hp_change):
+        self.hp += hp_change
+        if self.hp > self.max_hp:
+            self.hp = self.max_hp
+        
+        #A AJUSTER EN IMPLEMENTANT LE GAMEOVER
+        if self.hp <= 0:
+            self.hp = 1
     
-    def decrease_maxhp(self, max_hp, hp_lost):
-        self.max_hp -= hp_lost
+    
+    def change_atk(self, atk_change):
+        self.atk += atk_change
+        if self.atk <= 0:
+            self.afk = 1
+            print("Attaque minimale atteinte (1)")
+                
+    def change_def(self, def_change):
+        self.defense += def_change
+        if self.defense <= 0:
+            self.defense = 1
+            print("Defense minimale atteint (1)")
+
+    
+    
+            
