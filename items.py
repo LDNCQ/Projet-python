@@ -1,5 +1,30 @@
 from players import *
 
+class Items:
+    def HealingPotion(self):
+        self.name = "Potion de Soin"
+        self.healing_amount = 10
+    
+    def AttackPotion(self):
+        self.name = "Potion d'Attaque"
+        self.attack_boost = 5  # Augmentation d'attaque
+        
+    def DefensePotion(self):
+        self.name = "Potion de Défense"
+        self.defense_boost = 4  # Augmentation de défense
+        
+    def use(self, player):
+        player.hp += self.healing_amount
+        if player.hp > player.max_hp:
+            player.hp = player.max_hp
+        print(f"{player.name} a utilisé une {self.name} et a récupéré {self.healing_amount} points de vie.")
+
+
+
+
+
+
+"""
 class HealingPotion:
     def __init__(self):
         self.name = "Potion de Soin"
@@ -35,7 +60,7 @@ class DefensePotion:
 healing_potion = HealingPotion()
 attack_potion = AttackPotion()
 defense_potion = DefensePotion()
-        
+        """
     
     
     
