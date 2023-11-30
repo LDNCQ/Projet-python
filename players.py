@@ -1,8 +1,18 @@
 from items import *
 class Entity:
     
-    #name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
-    #p1.max_hp, p1.hp, p1.atk, p1.defense, p1.xp, p1.xp_until_lvlup, p1.level
+    
+    """   
+    name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
+    p1.max_hp, p1.hp, p1.atk, p1.defense, p1.xp, p1.xp_until_lvlup, p1.level
+    """
+    
+    """
+    Pour créer une classe joueur
+    p1 = Entity
+    p1.player(p1, "Joueur 1", 10, 10, 5, 5, 0, 10, 1)
+    """
+
     
     def player(self, name : str, max_hp, hp, atk, defense, xp, xp_until_lvlup, level):
         self.name = name
@@ -17,8 +27,11 @@ class Entity:
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
             
-    
-    """def monster(self, name : str, max_hp, hp, atk, defense)"""
+            
+            
+            
+    #def monster(self, name : str, max_hp, hp, atk, defense)
+    #FAIRE FONCTION MONSTRE
         
 
         
@@ -31,8 +44,8 @@ class Entity:
         print(f"XP: {self.xp}/{self.xp_until_lvlup}")
         print(f"Level: {self.level}")
         print("Objets disponibles :")
-        for i in range(len(self.inventory)):
-            print(self.inventory[i].name)
+        for i in self.inventory:
+            print(i.name)
 
         
     def level_up(self):
@@ -51,6 +64,15 @@ class Entity:
         self.xp += xp_gained
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
+        
+    """
+    Potion de défense = defpotion
+    Potion d'attaque = atkpotion
+    Potion de heal = healpotion
+    """       
+        
+    def add_item(self, item):
+        self.inventory.append(item)
         
         
     def use_item(self, item):
@@ -73,7 +95,12 @@ class Entity:
     #UTILISATION EXCEPTIONNELLE
 
     def change_maxhp(self, hp_amount):
-        self.max_hp -= hp_amount
+        self.max_hp += hp_amount
+        
+        #Ajuster les hp si les hp max sont inférieurs aux hp
+        if self.max_hp < self.hp:
+            self.hp = self.max_hp
+            
         if self.max_hp <= 0:
             self.max_hp = 1
             print("HP minimum atteint (1)")
@@ -98,7 +125,7 @@ class Entity:
         self.defense += def_amount
         if self.defense <= 0:
             self.defense = 1
-            print("Defense minimale atteint (1)")
+            print("Defense minimale atteinte (1)")
 
     
     
