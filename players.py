@@ -10,19 +10,19 @@ class Entity:
     """
     Pour créer une classe joueur
     p1 = Entity
-    p1.player(p1, "Joueur 1", 10, 10, 5, 5, 0, 10, 1)
+    p1.player(p1, "Joueur 1")
     """
 
     
-    def player(self, name : str, max_hp, hp, atk, defense, xp, xp_until_lvlup, level):
+    def player(self, name : str):
         self.name = name
-        self.max_hp = max_hp
-        self.hp = hp
-        self.atk = atk
-        self.defense = defense
-        self.xp = xp
-        self.xp_until_lvlup = xp_until_lvlup
-        self.level = level
+        self.max_hp = 10
+        self.hp = 10
+        self.atk = 5
+        self.defense = 5
+        self.xp = 0
+        self.xp_until_lvlup = 10
+        self.level = 1
         self.inventory = []
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
@@ -64,17 +64,18 @@ class Entity:
         self.xp += xp_gained
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
+         
+    def add_item(self, item):
+        self.inventory.append(item)
+        
         
     """
     Potion de défense = defpotion
     Potion d'attaque = atkpotion
     Potion de heal = healpotion
-    """       
-        
-    def add_item(self, item):
-        self.inventory.append(item)
-        
-        
+    """  
+    
+    
     def use_item(self, item):
         if item in self.inventory:
             item.use(self)
