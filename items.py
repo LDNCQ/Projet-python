@@ -20,7 +20,7 @@ class Items:
         self.stat_boost = 4  # Augmentation de défense
         
     def use(self, player):
-        player.self.stat_type += self.boost
+        self.player.stat_type += self.boost
         if player.hp > player.max_hp:
             player.hp = player.max_hp
         if self.stat_type == "hp":
