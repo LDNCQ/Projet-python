@@ -5,15 +5,15 @@ class Entity:
     """   
     name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
     p1.max_hp, p1.hp, p1.atk, p1.defense, p1.xp, p1.xp_until_lvlup, p1.level
-    """
-    
-    """
+
+
+
     Pour créer une classe joueur
     p1 = Entity
     p1.player(p1, "Joueur 1")
-    """
 
-    
+
+
     def player(self, name : str):
         self.name = name
         self.max_hp = 10
@@ -27,8 +27,44 @@ class Entity:
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
             
-            
-            
+    """        
+    """
+    
+    class Entity:
+    def __init__(self, name, max_hp, atk, defense):
+        self.name = name
+        self.max_hp = max_hp
+        self.hp = max_hp  # Commence avec la santé maximale
+        self.atk = atk
+        self.defense = defense
+        self.inventory = []
+
+    def show_stats(self):
+        print(f"{self.name}'s Stats:")
+        print(f"HP: {self.hp}/{self.max_hp}")
+        print(f"Attack: {self.atk}")
+        print(f"Defense: {self.defense}")
+
+
+    class Player(Entity):
+    def __init__(self, name):
+        super().__init__(name=name, max_hp=100, atk=10, defense=5)
+        self.level = 1
+        self.xp = 0
+        self.xp_until_lvlup = 20  # Valeur à ajuster selon votre logique de jeu
+
+    def level_up(self):
+        self.max_hp += 10
+        self.hp = self.max_hp
+        self.atk += 3
+        self.defense += 2
+        self.xp_until_lvlup *= 2
+        self.level += 1
+        print(f"{self.name} a monté de niveau !")
+        
+        
+    CORRIGER LE CODE AVEC CA (PAS JUSTE RECOPIER) (le code marche pas pour le moment)    
+    """         
             
     #def monster(self, name : str, max_hp, hp, atk, defense)
     #FAIRE FONCTION MONSTRE
@@ -77,11 +113,15 @@ class Entity:
     
     
     def use_item(self, item):
-        if item in self.inventory:
-            item.use(self)
-            self.inventory.remove(item)
+        if isinstance(item, Items):
+            if item in self.inventory:
+                item.use(self)
+                self.inventory.remove(item)
+                print(f"{self.name} a utilisé {item.name}")
+            else:
+                print(f"{self.name} ne possède pas {item.name} dans son inventaire.")
         else:
-            print(f"{self.name} ne possède pas {item.name} dans son inventaire.")
+            print("Cet objet n'existe pas ou ne peut pas être utilisé par le joueur.")
             
     #test
             
