@@ -1,35 +1,4 @@
 from players import *
-      
-"""
-class Items:
-    def HealingPotion(self):
-        self.stat_type = "hp"
-        self.name = "Potion de Soin"
-        self.stat_boost = 10 # Soin
-    
-    def AttackPotion(self):
-        self.stat_type = "atk"
-        self.name = "Potion d'Attaque"
-        self.stat_boost = 5  # Augmentation d'attaque
-        
-    def DefensePotion(self):
-        self.stat_type = "defense"
-        self.name = "Potion de Défense"
-        self.stat_boost = 4  # Augmentation de défense
-        
-    def use(player, item):
-        value = getattr(player, item.stat_type)
-        new_value = value + item.stat_boost
-        setattr(player, item.stat_type, new_value)     
-        if player.hp > player.max_hp:
-            player.hp = player.max_hp
-        if item.stat_type == "hp":
-            print(f"{player.name} a utilisé une {item.name} et a récupéré {item.stat_boost} points de vie.")
-        else:
-            print(f"{player.name} a utilisé une {item.name} et a gagné {item.stat_boost} points d'{item.stat_name}.")
-"""         
-
-
 
 class Items:
     def use(self, player):
