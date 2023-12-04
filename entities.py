@@ -83,14 +83,12 @@ class Player(Entity):
         self.level += 1
         print(f"{self.name} a monté de niveau !")
         
-    def show_xp(self):
+    def show_stats(self):
+        super().show_stats()
         print(f"XP: {self.xp}/{self.xp_until_lvlup}")
-        
-        
-    def show_inventory(self):
         print("Objets disponibles :")
         for i in self.inventory:
-             print(i.name)        
+             print(i.name)               
     
     def show_ennemy_stats(self, monster):
         print(f"Stats de {monster.name}")
