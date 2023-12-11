@@ -1,5 +1,6 @@
 from items import *
 import random
+
 """   
     name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
     p1.max_hp, p1.hp, p1.atk, p1.defense, p1.xp, p1.xp_until_lvlup, p1.level p1.inventory
@@ -131,13 +132,14 @@ class Player(Entity):
 class Monster(Entity):
     def __init__(self, name:str):
         self.name = name
-        self.level = 2
+        self.level = joueur.level+(random.randint(0,5))
         self.atk = 5+self.level*1.8
         self.defense = 6+self.level*2
-        self.max_hp = 15+self.level*6
+        self.max_hp = 15+self.level*4
         self.hp = self.max_hp
         
-            
+
+joueur = Player("à changer au lancement du jeu")
             
     #def monster(self, name : str)
     #FAIRE FONCTION MONSTRE
