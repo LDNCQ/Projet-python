@@ -1,4 +1,4 @@
-from players import *
+from entities import *
 
 class Items:
     def use(self, player):
