@@ -25,6 +25,8 @@ def gerer_evenement(case):
 #-----------------------------------------------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------------------------------------------#
 
+# Mot secret pour permettre de se déplacer à nouveau
+mot_secret = "motsecret"
 
 # N E S O
 def deplacer(direction, position_joueur):
@@ -37,7 +39,7 @@ def deplacer(direction, position_joueur):
     elif direction == 'ouest' and position_joueur[1] > 0:
         position_joueur[1] -= 1
     else:
-        print("hop! hop!, tu ne peut pas allez dans un mur.")
+        print("Tu a atteinte la limite de la map")
         return False
 
     # pose actuelle
@@ -52,16 +54,17 @@ def deplacer(direction, position_joueur):
 
     # Vérifier si le joueur a atteint une case spéciale
     if case_actuelle == 'office':
-        mot_saisi = input("zone special")
+        mot_saisi = input("Zone spéciale. Entrez le mot secret pour pouvoir vous déplacer à nouveau : ")
         if mot_saisi != mot_secret:
-            print("vous avez gagné")
+            print("Vous avez gagné !")
             return False
+        else:
+            global dans_boucle_deplacement
+            dans_boucle_deplacement = False
     else:
-        print("lorem")
+        print("Lorem")
         return True
 
-# Mot secret pour permettre de se déplacer à nouveau
-mot_secret = "motsecret"
 
 
 
@@ -75,35 +78,35 @@ historique_positions = [position_joueur.copy()]
 
 
 while True:
-    # while déplacement
-    while True:
-        # help
-        direction = input("Entrez la direction (nord, est, sud, ouest): ").lower()
+    # Boucle de déplacement
+    while dans_boucle_deplacement:
+        # dmd au joueur la direction
+        direction = input("Entrez la direction (nord, est, sud, ouest: ").lower()
 
-        # quitter deplacement pour entrer dans mode combat
+        # ff
         if direction == 'quitter':
+            dans_boucle_deplacement = False
             break
 
-    
         # Copier les coordonnées actuelles du joueur
         ancienne_position = position_joueur.copy()
 
         # Mettre à jour les coordonnées du joueur
-        deplacer(direction, position_joueur)
-        
-        # Ajouter la position actuelle à l'historique
-        historique_positions.append(position_joueur.copy())
-    
-    #revenir apres le mode combat (input a changer )
-    recommencer = input("Voulez-vous recommencer ? (oui/non) ").lower()
+        deplacement_reussi = deplacer(direction, position_joueur)
+
+        #copier la position du joueur avant le combat
+        if deplacement_reussi:
+            historique_positions.append(position_joueur.copy())
+
+    # Boucle de combat (à développer)
+
+    # Demander à l'utilisateur s'il souhaite revenir à la boucle de déplacement
+    recommencer = input("Voulez-vous revenir à la boucle de déplacement ? (oui/non) ").lower()
     if recommencer != 'oui':
         break
 
-
-
-
-
-
+    # Réinitialiser la variable pour la prochaine itération
+    dans_boucle_deplacement = True
 
 
 
