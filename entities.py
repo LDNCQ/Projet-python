@@ -9,7 +9,6 @@ from combat_mod import *
 
     Pour créer une classe joueur
     p1 = Player("Joueur")
-
 """
 
     
@@ -111,7 +110,7 @@ class Player(Entity):
     Potion de défense = defpotion
     Potion d'attaque = atkpotion
     Potion de heal = healpotion
-    """  
+    """
     
     def use_item(self, item):
         if isinstance(item, Items):
