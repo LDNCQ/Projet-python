@@ -1,5 +1,6 @@
 from items import *
 import random
+from combat_mod import *
 
 """   
     name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
@@ -87,9 +88,13 @@ class Player(Entity):
     def show_stats(self):
         super().show_stats()
         print(f"XP: {self.xp}/{self.xp_until_lvlup}")
-        print("Objets disponibles :")
+        self.show_inv()     
+             
+    def show_inv(self): 
+        print("Inventaire :")
         for i in self.inventory:
-             print(i.name)               
+            print(i.name) 
+
     
     def show_ennemy_stats(self, monster):
         print(f"Stats de {monster.name}")
