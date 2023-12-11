@@ -7,16 +7,23 @@ carte = [
     ['italy', 'office', 'feur', 'quoi', 'spawn']
 ]
 
-# Mot secret pour permettre de se déplacer à nouveau
-mot_secret = "bellobito"
+# les co du spawn
+position_joueur = [4, 4]
+
+#-----------------------------------------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------------------------------------#
+
 
 # pour les event aleatoire de spawn de mobs et loots
 def gerer_evenement(case):
     if case == 'quoi':
-        print("un mob qui spawn boue")
+        print("objet 2")
     elif case == 'feur':
-        print("ouaw un iphone 15 pro max 120hz")
+        print("objet 1")
     #...
+
+#-----------------------------------------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------------------------------------#
 
 
 # N E S O
@@ -38,28 +45,35 @@ def deplacer(direction, position_joueur):
 
     # affichage
     print(f"Bienvenue à {case_actuelle}")
-    print(f" {position_joueur}") #pour se reperer (a suppre)
+    print(f" {position_joueur}") #pour se reperer, c les co (a suppre)
 
     # Gérer l'événement pour la case actuelle
     gerer_evenement(case_actuelle)
 
-    # Vérifier si le joueur a atteint la case spéciale
+    # Vérifier si le joueur a atteint une case spéciale
     if case_actuelle == 'office':
-        mot_saisi = input("Vous avez atteint la sortie ! Entrez le mot secret pour pouvoir vous déplacer à nouveau : ")
+        mot_saisi = input("zone special")
         if mot_saisi != mot_secret:
-            print("vous avez fuis")
+            print("vous avez gagné")
             return False
     else:
-        print("gg")
+        print("lorem")
         return True
 
-# les co du spawn
-position_joueur = [4, 4]
+# Mot secret pour permettre de se déplacer à nouveau
+mot_secret = "motsecret"
 
 
+
+
+#-----------------------------------------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------------------------------------#
+
+
+#sauvegarde de la position du joueur
 historique_positions = [position_joueur.copy()]
 
-# main while
+
 while True:
     # while déplacement
     while True:
@@ -71,20 +85,16 @@ while True:
             break
 
     
-
         # Copier les coordonnées actuelles du joueur
         ancienne_position = position_joueur.copy()
 
         # Mettre à jour les coordonnées du joueur
         deplacer(direction, position_joueur)
         
-        
-
-
         # Ajouter la position actuelle à l'historique
         historique_positions.append(position_joueur.copy())
     
-    #revenir apres le mode combat
+    #revenir apres le mode combat (input a changer )
     recommencer = input("Voulez-vous recommencer ? (oui/non) ").lower()
     if recommencer != 'oui':
         break
