@@ -2,11 +2,11 @@ from entities import *
 
 # liste bidimensionnelle pour la map
 carte = [
-    ['heaven', 'split', 'fracture', 'bind', 'ascent'],
-    ['icebox', 'breeze', 'pearl', 'lotus', 'dust2'],
-    ['mirage', 'mirage', 'nuke', 'cache', 'train'],
-    ['overpass', 'cobblestone', 'inferno', 'agency', 'assault'],
-    ['italy', 'office', 'feur', 'quoi', 'spawn']
+    ["Glacier du Silence", "Temple des Souvenirs", "Porte des Étoiles", "Collines d'Azur", "Terres de Brume"],
+    ["Plage des Songes", 'Terres de Fer', "Grottes de l'Abîme", "Chutes d'Ébène", "Jungle de l'Éclipse"],
+    ["Falaises du Serpent", "Désert d'Ivoire", "Îles de l'Aurore", "Forêt d'Argent", "Marais des Ombres"],
+    ["Cité des Vents", "Îles des Sirens", "Canyon de l'Écho", "Ruines d'Opale", "Lac des Mystères"],
+    ["Château des Lamentations", "Plaines du Mirage", "Montagnes du Crépuscule", "Vallée d'Émeraude", "Volcan de l'Ombre"]
 ]
 
 # les co du spawn
@@ -20,13 +20,22 @@ dans_boucle_deplacement = True
 # -----------------------------------------------------------------------------------------------------------------#
 # -----------------------------------------------------------------------------------------------------------------#
 
+itemUtiliser = False
 
 # pour les event aleatoire de spawn de mobs et loots
 def gerer_evenement(case):
+    
+    global itemUtiliser
+
     print(case)
-    if case == 'quoi':
+    if case == "Vallée d'Émeraude" and not itemUtiliser:
         print("Vous avez obtenu une potion de vie")
-    elif case == 'feur':
+        joueur.add_item(healpotion)
+        print("potion de vie +1")
+        joueur.show_inv()
+        itemUtiliser = True
+        
+    elif case == "Montagnes du Crépuscule":
         print("objet 1")
     # ...
 
@@ -79,6 +88,7 @@ while True:
             dans_boucle_deplacement = False
             quitter =input("etes vous sur de quitter ? la parti ne serra pas sauvegarder !!! (oui ou non) :")
             if quitter == "oui" :
+                print("GAME OVER")
                 break
             elif quitter == 'non':
                 dans_boucle_deplacement = True

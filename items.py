@@ -1,43 +1,41 @@
-from players import *
+from entities import *
 
-class HealingPotion:
+class Items:
+    def use(self, player):
+        pass  # Méthode générale pour l'utilisation des objets, à définir dans chaque sous-classe
+
+class HealingPotion(Items):
     def __init__(self):
-        self.name = "Potion de Soin"
-        self.healing_amount = 10  # Montant de guérison
+        self.name = "Potion de soin"
+
+        self.stat_boost = 10
 
     def use(self, player):
-        player.hp += self.healing_amount
+        player.hp += self.stat_boost
         if player.hp > player.max_hp:
             player.hp = player.max_hp
-        print(f"{player.name} a utilisé une {self.name} et a récupéré {self.healing_amount} points de vie.")
-
-
-class AttackPotion:
-    def __init__(self):
-        self.name = "Potion d'Attaque"
-        self.attack_boost = 5  # Augmentation d'attaque
-
-    def use(self, player):
-        player.atk += self.attack_boost
-        print(f"{player.name} a utilisé une {self.name} et a augmenté son attaque de {self.attack_boost} points.")
-
-
-class DefensePotion:
-    def __init__(self):
-        self.name = "Potion de Défense"
-        self.defense_boost = 4  # Augmentation de défense
-
-    def use(self, player):
-        player.defense += self.defense_boost
-        print(f"{player.name} a utilisé une {self.name} et a augmenté sa défense de {self.defense_boost} points.")
-
-
-healing_potion = HealingPotion()
-attack_potion = AttackPotion()
-defense_potion = DefensePotion()
+        print(f"{player.name} a utilisé une {self.name} et a récupéré {self.stat_boost} points de vie.")
         
-    
-    
-    
-    
-    
+class AttackPotion(Items):
+    def __init__(self):
+        self.name = "Potion d'attaque"
+        self.stat_boost = 5
+
+    def use(self, player):
+        player.atk += self.stat_boost
+        print(f"{player.name} a utilisé une {self.name} et a gagné {self.stat_boost} points de d'attaque.")
+
+
+class DefensePotion(Items):
+    def __init__(self):
+        self.name = "Potion de défense"
+        self.stat_boost = 4
+
+    def use(self, player):
+        player.defense += self.stat_boost
+        print(f"{player.name} a utilisé une {self.name} et a gagné {self.stat_boost} points de défense.")
+
+
+healpotion = HealingPotion()
+atkpotion = AttackPotion()
+defpotion = DefensePotion()
