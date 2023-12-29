@@ -1,38 +1,4 @@
-def credits():
-  #affichage des créateurs du jeu
-  main_menu()
 
-
-
-def exit():
-  save()
-  #fermer le jeu
-
-
-def save():
-  # c'est compliqué on verra plus tard
-
-
-def game():
-  game():
-  #affichage de l'histoire
-  #demander le nom   du héro
-  #crée un personnage
-
-def move():
-
-move()
-
-
-def load_game():
-  #récupération de la sauvegarge
-  #changement du jeu en fct de la svg
-  move()
-
-
-def Fight():
-    Fight()
-    
 def main_menu():
   #Afficher les options
   print("MAIN MENU :")
