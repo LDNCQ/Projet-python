@@ -17,7 +17,12 @@ position_joueur = [4, 4]
 # Variable pour indiquer si le joueur est dans la boucle de déplacement
 dans_boucle_deplacement = True
 
+def Separe():
+    print("==================================================")
+
+
 # -----------------------------------------------------------------------------------------------------------------#
+
 # -----------------------------------------------------------------------------------------------------------------#
 
 itemUtiliser = False
@@ -27,11 +32,10 @@ def gerer_evenement(case):
     
     global itemUtiliser
 
-    print(case)
     if case == "Vallée d'Émeraude" and not itemUtiliser:
         print("Vous avez obtenu une potion de vie")
         joueur.add_item(healpotion)
-        print("potion de vie +1")
+        print("     -- potion de vie +1")
         joueur.show_inv()
         itemUtiliser = True
         
@@ -40,9 +44,8 @@ def gerer_evenement(case):
     # ...
 
 # -----------------------------------------------------------------------------------------------------------------#
+
 # -----------------------------------------------------------------------------------------------------------------#
-
-
 
 
 # Nord Est Sud Ouest
@@ -65,12 +68,14 @@ def deplacer(direction, position_joueur):
     case_actuelle = carte[position_joueur[0]][position_joueur[1]]
 
     # affichage
-    print(f"Bienvenue à {case_actuelle}")
-
+    Separe()
+    print(f"          Bienvenue à {case_actuelle}")
+    Separe()
     # Gérer l'événement pour la case actuelle
     gerer_evenement(case_actuelle)
     
 # -----------------------------------------------------------------------------------------------------------------#
+
 # -----------------------------------------------------------------------------------------------------------------#
 
 # sauvegarde de la position du joueur
