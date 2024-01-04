@@ -1,35 +1,62 @@
+run = True
+menu = True
+play = False
+rules = False
 
-def main_menu():
-  #Afficher les options
-  print("MAIN MENU :")
-  print("1. Création d'une nouvelle partie")
-  print("2. Sauvegarde de la partie")
-  print("3. Crédit")
-  print("4. Fermer")
+HP = 50
+ATK = 3
 
-main_menu()
-  #demander au joueur de choisir une option
-choice = input("Entrer votre choix: ")
-  
-if choice == "1":
-    print("Creation d'une nouvelle partie...")
-    # Ajoutez ici le code pour créer une nouvelle partie
-    player_name = input("Entrer le nom de votre personnage: ")
-    print(f"Ravie de vous rencontrez {player_name}")
 
-elif choice == "2":
-    print("Sauvegarde de la partie...")
-    # Ajoutez ici le code pour charger une partie sauvegardée
+def save():
+    list = [
+        name,
+        str(HP),
+        str(ATK)
+    ]
 
-elif choice == "3":
-    print("Crédit")
-    print("Réalisateur: Willy, Anthony, Imrane")
-    print("Copyrigh 2024")
+    f = open("load.txt", "w")
+    
+    for item in list:
+        f.write(item + "\n")
+    f.close()
 
-elif choice == "4":
-    print("Fermeture du jeu...")
-    # Ajoutez ici le code pour quitter le jeu
+while run:
+    while menu:
+        print("1, Nouvelle Partie")
+        print("2, Sauvegarder la partie")
+        print("3, Règles")
+        print("4, Quitter")
+        
+        if rules:
+            print("Je suis le développeur du jeu et voici les règles")
+            rules = False
+            choice = ""
+            input("> ")
+        else:
+            choice = input("# ")
+        
+        if choice == "1":
+            name = input("# Quelle est votre prénom ? ")
+            menu = False
+            play = True
+        elif choice == "2":
+            f = open("load.txt", "r")
+            load_list = f.readlines
+        elif choice == "3":
+            rules = True
+        elif choice == "4":
+            quit()
 
-else:
-    print("Invalid choice. Please enter a valid option.")
-  #Faire l'action choisie
+
+
+while play:
+    save()
+    
+    
+    dest = input('# ')
+    
+    if dest == "0":
+        play = False
+        menu = True       
+        save()
+        
