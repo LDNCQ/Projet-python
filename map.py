@@ -1,7 +1,7 @@
 from entities import *
 from colorama import Fore, Back, Style
 from playsound import playsound
-import time
+
 
 # liste bidimensionnelle pour la map
 carte = [
@@ -23,13 +23,6 @@ dans_boucle_deplacement = True
 def Separe():
     print("==================================================")
 
-def play_background_music(file_path, volume=0.5):
-    # Adjust the volume (note: playsound may not support volume adjustment on all platforms)
-    playsound(file_path)
-    
-if __name__ == "__main__":
-    # Specify the path to your music file (e.g., "background_music.mp3")
-    music_file = "backgroundMusic.mp3"
 # -----------------------------------------------------------------------------------------------------------------#
 
 # -----------------------------------------------------------------------------------------------------------------#
@@ -42,6 +35,7 @@ def gerer_evenement(case):
     global itemUtiliser
 
     if case == "Vallée d'Émeraude" and not itemUtiliser:
+        playsound('backgroundMusic.wav')
         print(Fore.RED + "Vous avez découvert un objet mythique et mystérieux..." + Fore.RESET)
         print()
         print()
@@ -51,6 +45,7 @@ def gerer_evenement(case):
         print("     -- potion de vie +1")
         input("...")
         itemUtiliser = True
+        
         
     elif case == "Montagnes du Crépuscule":
         print("objet 1")
