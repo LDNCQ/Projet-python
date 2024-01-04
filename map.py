@@ -1,4 +1,5 @@
 from entities import *
+from colorama import Fore, Back, Style
 
 # liste bidimensionnelle pour la map
 carte = [
@@ -33,9 +34,11 @@ def gerer_evenement(case):
     global itemUtiliser
 
     if case == "Vallée d'Émeraude" and not itemUtiliser:
-        print("Vous avez obtenu une potion de vie")
+        print("Vous avez découvert un objet mythique et mystérieux.")
+        input(" Appuyez sur une touche pour en révéler les secrets.")
+        print(Fore.RED + "Vous avez obtenu une potion de vie" + Fore.RESET) 
         joueur.add_item(healpotion)
-        print("     -- potion de vie +1")
+        input("     -- potion de vie +1")
         joueur.show_inv()
         itemUtiliser = True
         
