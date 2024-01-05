@@ -1,3 +1,4 @@
+import simpleaudio as sa
 from entities import *
 from colorama import Fore, Back, Style
 
@@ -17,6 +18,21 @@ position_joueur = [4, 4]
 # Variable pour indiquer si le joueur est dans la boucle de déplacement
 dans_boucle_deplacement = True
 
+# Chargez la musique de fond
+background_music = sa.WaveObject.from_wave_file("backgroundMusic.wav")
+
+#pour jouer la musique de fond
+def play_background_music():
+    global background_music
+    play_obj = background_music.play()
+    return play_obj
+
+#pour arrêter la musique de fond
+def stop_background_music(play_obj):
+    play_obj.stop()
+
+play_obj = play_background_music() # play
+
 def Separe():
     print("==================================================")
 
@@ -32,6 +48,7 @@ def gerer_evenement(case):
     global itemUtiliser
 
     if case == "Vallée d'Émeraude" and not itemUtiliser:
+
         print(Fore.RED + "Vous avez découvert un objet mythique et mystérieux..." + Fore.RESET)
         print()
         print()
