@@ -59,7 +59,6 @@ def gerer_evenement(case):
         input("...")
         itemUtiliser = True
         
-        
     elif case == "Montagnes du Crépuscule":
         print("objet 1")
     # ...
