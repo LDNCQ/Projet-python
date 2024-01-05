@@ -1,7 +1,8 @@
 from entities import *
 from colorama import Fore, Back, Style
 from playsound import playsound
-
+import threading
+import time
 
 # liste bidimensionnelle pour la map
 carte = [
@@ -15,7 +16,19 @@ carte = [
 # les co du spawn
 position_joueur = [4, 4]
 
+# Dictionnaire pour mapper chaque case à un fichier audio
+musiques_par_case = {
+    "Vallée d'Émeraude": "test.mp3",
+    "Montagnes du Crépuscule": "epic.mp3",
+    "Terres de Brume": "epic.mp3",
+    #...
+}
 
+# Fonction pour jouer la musique associée à la case actuelle
+def jouer_musique_dans_case(case):
+    musique = musiques_par_case.get(case)
+    if musique:
+        playsound(musique)
 
 # Variable pour indiquer si le joueur est dans la boucle de déplacement
 dans_boucle_deplacement = True
@@ -35,7 +48,6 @@ def gerer_evenement(case):
     global itemUtiliser
 
     if case == "Vallée d'Émeraude" and not itemUtiliser:
-        playsound('backgroundMusic.wav')
         print(Fore.RED + "Vous avez découvert un objet mythique et mystérieux..." + Fore.RESET)
         print()
         print()
@@ -89,32 +101,46 @@ def deplacer(direction, position_joueur):
 # sauvegarde de la position du joueur
 historique_positions = [position_joueur.copy()]
 
+if __name__ == "__main__":
+    # Utilisez threading pour exécuter playsound en arrière-plan
+    def play_background_music():
+        while True:
+            position_actuelle = carte[position_joueur[0]][position_joueur[1]]
+            jouer_musique_dans_case(position_actuelle)
+            time.sleep(1)
 
-while True:
-    # Boucle de déplacement
-    while dans_boucle_deplacement:
-        # dmd au joueur la direction
-        direction = input("Entrez la direction nord, est, sud, ouest: ").lower()
+    music_thread = threading.Thread(target=play_background_music)
+    music_thread.start()
 
-        # ff
-        if direction == 'ff':
-            dans_boucle_deplacement = False
-            quitter =input("etes vous sur de quitter ? la parti ne serra pas sauvegarder !!! (oui ou non) :")
-            if quitter == "oui" :
-                print("GAME OVER")
-                break
-            elif quitter == 'non':
-                dans_boucle_deplacement = True
+    try:
+        while True:
+            # Boucle de déplacement
+            while dans_boucle_deplacement:
+                # dmd au joueur la direction
+                direction = input("Entrez la direction nord, est, sud, ouest: ").lower()
 
-        # Copier les coordonnées actuelles du joueur
-        ancienne_position = position_joueur.copy()
+                # ff
+                if direction == 'ff':
+                    dans_boucle_deplacement = False
+                    quitter = input("etes vous sur de quitter ? la partie ne sera pas sauvegardée !!! (oui ou non) :")
+                    if quitter == "oui":
+                        print("GAME OVER")
+                        break
+                    elif quitter == 'non':
+                        dans_boucle_deplacement = True
 
-        # Mettre à jour les coordonnées du joueur
-        deplacement_reussi = deplacer(direction, position_joueur)
+                # Copier les coordonnées actuelles du joueur
+                ancienne_position = position_joueur.copy()
 
-        # copier la position du joueur avant le combat
-        if deplacement_reussi:
-            historique_positions.append(position_joueur.copy())
+                # Mettre à jour les coordonnées du joueur
+                deplacement_reussi = deplacer(direction, position_joueur)
 
-    # Boucle de combat (à développer)
+                # copier la position du joueur avant le combat
+                if deplacement_reussi:
+                    historique_positions.append(position_joueur.copy())
 
+
+            # Boucle de combat (à développer)
+
+    except KeyboardInterrupt:
+        music_thread.join()
