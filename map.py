@@ -52,11 +52,22 @@ TerresDeFer = False
 TempleDesSouvenirs = False
 PorteDesEtoiles = False
 CollinesDazur = False
+FalaisesDuSerpent = False
+PlageDesSonges = False
+GrottesDelAbime = False
+ChutesDebene = False
+LacDesMysteres = False
+RuinesDopale = False
+CanyonDeLecho  = False
+IlesDesSirens = False
+DesertDivoire = False
+TerresDeBrume = False
+MaraisDesOmbres = False
 
 # pour les event aleatoire de spawn de mobs et loots
 def gerer_evenement(case):
     
-    global itemUtiliser1, itemUtiliser2, itemUtiliser3,itemUtiliser4, itemUtiliser5, itemUtiliser6, foretDargent, jungleDeLeclipse, TerresDeFer, TempleDesSouvenirs, PorteDesEtoiles, CollinesDazur
+    global itemUtiliser1,TerresDeBrume, IlesDesSirens,MaraisDesOmbres, DesertDivoire, itemUtiliser2, itemUtiliser3,itemUtiliser4, itemUtiliser5, itemUtiliser6, foretDargent, jungleDeLeclipse, TerresDeFer, TempleDesSouvenirs, PorteDesEtoiles, CollinesDazur, FalaisesDuSerpent, PlageDesSonges, GrottesDelAbime, ChutesDebene, LacDesMysteres, RuinesDopale, CanyonDeLecho
 
     if case == "Vallée d'Émeraude" and not itemUtiliser1:
         print(Fore.MAGENTA + Style.BRIGHT + "Vous entrez dans la Vallée d'Émeraude, un sanctuaire magique caché entre les montagnes.")
@@ -86,7 +97,7 @@ def gerer_evenement(case):
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     
     elif case == "Vallée d'Émeraude" and itemUtiliser1:
-        print("Rebonjour dans la Vallée d'Émeraude ! Vous vous souvenez du coffre mystérieux que vous avez découvert lors de votre première visite.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans la Vallée d'Émeraude ! Vous vous souvenez du coffre mystérieux que vous avez découvert lors de votre première visite."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     # -----------------------------------------------------------------------------------------------------------------#
@@ -120,7 +131,7 @@ def gerer_evenement(case):
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     elif case == "Montagnes du Crépuscule" and itemUtiliser2:
-        print("Rebonjour dans les Montagnes du Crépuscule ! Vous vous souvenez des bandits qui ont attaqué lors de votre première visite.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans les Montagnes du Crépuscule ! Vous vous souvenez des bandits qui ont attaqué lors de votre première visite."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     # -----------------------------------------------------------------------------------------------------------------#
@@ -141,7 +152,7 @@ def gerer_evenement(case):
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     elif case == "Plaines du Mirage" and itemUtiliser3:
-        print("Rebonjour dans les Plaines du Mirage ! Vous vous souvenez des illusions changeantes, de l'oasis magique, et de la menace des créatures de l'ombre.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans les Plaines du Mirage ! Vous vous souvenez des illusions changeantes, de l'oasis magique, et de la menace des créatures de l'ombre."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     # -----------------------------------------------------------------------------------------------------------------#
@@ -168,20 +179,20 @@ def gerer_evenement(case):
         choix_affrontement = input(Fore.RED + Style.BRIGHT +"Voulez-vous affronter la horde de fantômes ? (Oui/Non) \n>"+Fore.RESET + Style.RESET_ALL).lower()
 
         if choix_affrontement == "oui":
-            print("Vous décidez de faire face à la horde de fantômes. Votre lame coupe à travers les formes éthérées, dissipant les lamentations.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous décidez de faire face à la horde de fantômes. Votre lame coupe à travers les formes éthérées, dissipant les lamentations.")
             print("À mesure que la horde diminue, l'énergie sinistre qui imprègne le château commence à se dissiper.")
-            print("Les âmes tourmentées semblent enfin trouver la paix. Le Château des Lamentations respire un sentiment de calme retrouvé.")
+            print("Les âmes tourmentées semblent enfin trouver la paix. Le Château des Lamentations respire un sentiment de calme retrouvé."+Fore.RESET + Style.RESET_ALL)
             itemUtiliser4 = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
-            print("Vous choisissez de contourner la horde de fantômes, évitant un combat potentiellement dangereux.")
-            print("Cependant, la voix sinistre murmure que les ombres continueront à hanter le château jusqu'à ce que la vérité soit révélée.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous choisissez de contourner la horde de fantômes, évitant un combat potentiellement dangereux.")
+            print("Cependant, la voix sinistre murmure que les ombres continueront à hanter le château jusqu'à ce que la vérité soit révélée."+Fore.RESET + Style.RESET_ALL)
             print("Votre décision aura des conséquences sur le destin du Château des Lamentations.")
 
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         
     elif case == "Château des Lamentations" and itemUtiliser4:
-        print("Rebonjour dans le Château des Lamentations ! Vous vous souvenez des murs en ruine, des lamentations des âmes tourmentées, et de la horde de fantômes.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans le Château des Lamentations ! Vous vous souvenez des murs en ruine, des lamentations des âmes tourmentées, et de la horde de fantômes."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     # -----------------------------------------------------------------------------------------------------------------#
 
@@ -208,18 +219,18 @@ def gerer_evenement(case):
         choix_combat_feu = input(Fore.RED + Style.BRIGHT +"Voulez-vous affronter les ennemis de feu ? (Oui/Non) "+ Fore.RESET + Style.RESET_ALL).lower()
 
         if choix_combat_feu == "oui":
-            print("Vous vous engagez dans la bataille contre les ennemis de feu. Les flammes éclatent dans une danse furieuse.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous vous engagez dans la bataille contre les ennemis de feu. Les flammes éclatent dans une danse furieuse.")
             print("À mesure que vous triomphez, les créatures laissent derrière elles des marques de cendres et de résistance brisée.")
-            print("La voie vers l'avant s'ouvre, mais la chaleur du volcan s'intensifie.")
+            print("La voie vers l'avant s'ouvre, mais la chaleur du volcan s'intensifie." + Fore.RESET + Style.RESET_ALL)
             itemUtiliser5 = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
-            print("Vous choisissez de contourner les ennemis de feu, évitant un affrontement potentiellement périlleux.")
-            print("Cependant, la voix sinistre murmure que votre chemin pourrait être semé d'autres dangers, car les ombres du volcan cachent bien des mystères.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous choisissez de contourner les ennemis de feu, évitant un affrontement potentiellement périlleux.")
+            print("Cependant, la voix sinistre murmure que votre chemin pourrait être semé d'autres dangers, car les ombres du volcan cachent bien des mystères." + Fore.RESET + Style.RESET_ALL)
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     elif case == "Volcan de l'Ombre" and itemUtiliser5:
-        print("Rebonjour dans le Volcan de l'Ombre ! Vous vous souvenez des rivières de lave, des ombres dansantes, et de la rencontre avec les ennemis de feu.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans le Volcan de l'Ombre ! Vous vous souvenez des rivières de lave, des ombres dansantes, et de la rencontre avec les ennemis de feu."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     # -----------------------------------------------------------------------------------------------------------------#
 
@@ -245,20 +256,20 @@ def gerer_evenement(case):
         choix_combat_tornade = input(Fore.RED + Style.BRIGHT +"Voulez-vous affronter les ennemis en forme de tornade ? (Oui/Non) "+ Fore.RESET + Style.RESET_ALL).lower()
 
         if choix_combat_tornade == "oui":
-            print("Vous vous lancez dans la bataille contre les ennemis en forme de tornade. Leurs forces destructrices sont puissantes, mais votre détermination est inébranlable.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous vous lancez dans la bataille contre les ennemis en forme de tornade. Leurs forces destructrices sont puissantes, mais votre détermination est inébranlable.")
             print("À mesure que vous triomphez, les tornades perdent de leur force et se dissipent dans les vents.")
-            print("Les vents de la Cité reprennent leur calme, remerciant votre bravoure.")
+            print("Les vents de la Cité reprennent leur calme, remerciant votre bravoure."+Fore.RESET + Style.RESET_ALL)
             itemUtiliser6 = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
         else:
-            print("Vous choisissez de contourner les ennemis en forme de tornade, évitant un affrontement potentiellement dévastateur.")
-            print("Cependant, la voix sinistre murmure que la corruption dans les vents de la cité persiste, attendant d'autres occasions pour se manifester.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous choisissez de contourner les ennemis en forme de tornade, évitant un affrontement potentiellement dévastateur.")
+            print("Cependant, la voix sinistre murmure que la corruption dans les vents de la cité persiste, attendant d'autres occasions pour se manifester."+Fore.RESET + Style.RESET_ALL)
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     elif case == "Cité des Vents" and itemUtiliser6:
-        print("Rebonjour dans la Cité des Vents ! Vous vous souvenez des quartiers aériens, des dômes translucides, et de la menace des vents corrompus.")
-        print("Vous vous souvenez de la tempête tourbillonnante dans la Cité des Vents, des ennemis en forme de tornade déchirant tout sur leur passage, et de votre choix de les affronter ou de les contourner.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans la Cité des Vents ! Vous vous souvenez des quartiers aériens, des dômes translucides, et de la menace des vents corrompus.")
+        print("Vous vous souvenez de la tempête tourbillonnante dans la Cité des Vents, des ennemis en forme de tornade déchirant tout sur leur passage, et de votre choix de les affronter ou de les contourner."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     # -----------------------------------------------------------------------------------------------------------------#
 
@@ -284,18 +295,18 @@ def gerer_evenement(case):
         choix_combat_phalenes = input(Fore.RED + Style.BRIGHT +"Voulez-vous affronter les phalènes géantes ? (Oui/Non) "+ Fore.RESET + Style.RESET_ALL).lower()
 
         if choix_combat_phalenes == "oui":
-            print("Vous décidez de faire face aux phalènes géantes. Leurs ailes chatoyantes se mêlent à votre combat, mais votre détermination l'emporte.")
-            print("À mesure que vous triomphez, les phalènes retrouvent leur calme, contribuant à rétablir l'harmonie dans la Forêt d'Argent.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous décidez de faire face aux phalènes géantes. Leurs ailes chatoyantes se mêlent à votre combat, mais votre détermination l'emporte.")
+            print("À mesure que vous triomphez, les phalènes retrouvent leur calme, contribuant à rétablir l'harmonie dans la Forêt d'Argent."+Fore.RESET + Style.RESET_ALL)
             foretDargent = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
-            print("Vous choisissez de ne pas combattre les phalènes géantes, optant plutôt pour une approche pacifique.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous choisissez de ne pas combattre les phalènes géantes, optant plutôt pour une approche pacifique.")
             print("En utilisant votre sagesse, vous parvenez à communiquer avec les phalènes et à les apaiser.")
-            print("Leur agitation diminue, et elles vous guident vers l'Arbre d'Argent, reconnaissantes de votre choix pacifique.")
+            print("Leur agitation diminue, et elles vous guident vers l'Arbre d'Argent, reconnaissantes de votre choix pacifique."+Fore.RESET + Style.RESET_ALL)
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     elif case == "Forêt d'Argent" and foretDargent:
-        print("Rebonjour dans la Forêt d'Argent ! Vous vous souvenez des arbres aux feuilles d'argent étincelantes, des murmures du vent, et de la rencontre avec les phalènes géantes.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans la Forêt d'Argent ! Vous vous souvenez des arbres aux feuilles d'argent étincelantes, des murmures du vent, et de la rencontre avec les phalènes géantes."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
 # -----------------------------------------------------------------------------------------------------------------#
@@ -320,18 +331,18 @@ def gerer_evenement(case):
         choix_combat_jungle = input(Fore.RED + Style.BRIGHT +"Voulez-vous affronter les créatures de la Jungle de l'Éclipse ? (Oui/Non) "+ Fore.RESET + Style.RESET_ALL).lower()
 
         if choix_combat_jungle == "oui":
-            print("Vous décidez de faire face aux créatures de la Jungle de l'Éclipse. Leurs mouvements gracieux et agiles créent une danse complexe, mais vous êtes prêt.")
-            print("À mesure que vous triomphez, les créatures retrouvent leur calme, contribuant à rétablir l'équilibre dans la jungle.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous décidez de faire face aux créatures de la Jungle de l'Éclipse. Leurs mouvements gracieux et agiles créent une danse complexe, mais vous êtes prêt.")
+            print("À mesure que vous triomphez, les créatures retrouvent leur calme, contribuant à rétablir l'équilibre dans la jungle."+Fore.RESET + Style.RESET_ALL)
             jungleDeLeclipse = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
-            print("Vous choisissez de ne pas combattre les créatures de la Jungle de l'Éclipse, optant plutôt pour une approche pacifique.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous choisissez de ne pas combattre les créatures de la Jungle de l'Éclipse, optant plutôt pour une approche pacifique.")
             print("En utilisant votre empathie, vous parvenez à communiquer avec les créatures et à les apaiser.")
-            print("La jungle résonne de sons apaisants, et les créatures vous guident vers la prochaine épreuve, reconnaissantes de votre choix pacifique.")
+            print("La jungle résonne de sons apaisants, et les créatures vous guident vers la prochaine épreuve, reconnaissantes de votre choix pacifique."+Fore.RESET + Style.RESET_ALL)
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
     elif case == "Jungle de l'Éclipse" and jungleDeLeclipse:
-        print("Rebonjour dans la Jungle de l'Éclipse ! Vous vous souvenez de la végétation dense, des échos mystérieux, de l'éclipse perpétuelle, et de la rencontre avec les créatures éclipsées.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans la Jungle de l'Éclipse ! Vous vous souvenez de la végétation dense, des échos mystérieux, de l'éclipse perpétuelle, et de la rencontre avec les créatures éclipsées."+Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 # -----------------------------------------------------------------------------------------------------------------#
 
@@ -356,27 +367,27 @@ def gerer_evenement(case):
         choix_combat_tribu = input(Fore.RED + Style.BRIGHT +"Voulez-vous affronter la tribu gardienne des Terres de Fer ? (Oui/Non) " + Fore.RESET + Style.RESET_ALL).lower()
 
         if choix_combat_tribu == "oui":
-            print("Vous décidez de faire face à la tribu gardienne des Terres de Fer. Le combat est intense, chaque coup de lame résonnant dans les collines.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous décidez de faire face à la tribu gardienne des Terres de Fer. Le combat est intense, chaque coup de lame résonnant dans les collines.")
             print("À mesure que vous triomphez, le respect et l'acceptation gagnent le cœur des guerriers de la tribu.")
-            print("Le chef, admirant votre courage, vous accorde l'accès à la forge légendaire.")
+            print("Le chef, admirant votre courage, vous accorde l'accès à la forge légendaire."+ Fore.RESET + Style.RESET_ALL)
             TerresDeFer = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
         else:
-            print("Vous choisissez de ne pas combattre la tribu gardienne, optant plutôt pour une approche pacifique.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous choisissez de ne pas combattre la tribu gardienne, optant plutôt pour une approche pacifique.")
             print("En utilisant votre diplomatie, vous parvenez à négocier un accord.")
             print("La tribu, impressionnée par votre sagesse, vous accorde l'accès à la forge sans violence.")
-            print("Vous entrez dans la forge légendaire, portant le respect de la tribu comme un précieux trésor.")
+            print("Vous entrez dans la forge légendaire, portant le respect de la tribu comme un précieux trésor."+ Fore.RESET + Style.RESET_ALL)
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     
     elif case == "Terres de Fer" and TerresDeFer:
-        print("De retour dans les Terres de Fer, les collines rocailleuses et le souvenir de l'affrontement avec la tribu gardienne vous rappellent la maîtrise légendaire du fer.")
+        print(Fore.MAGENTA + Style.BRIGHT +"De retour dans les Terres de Fer, les collines rocailleuses et le souvenir de l'affrontement avec la tribu gardienne vous rappellent la maîtrise légendaire du fer."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 # -----------------------------------------------------------------------------------------------------------------#
 
 # -----------------------------------------------------------------------------------------------------------------#
     elif case == "Îles de l'Aurore":
-        print("Vous êtes de retour sur les Îles de l'Aurore. Les plages familières, les arbres accueillants et le ciel aux teintes dorées vous rappellent le début de votre aventure.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Vous êtes de retour sur les Îles de l'Aurore. Les plages familières, les arbres accueillants et le ciel aux teintes dorées vous rappellent le début de votre aventure."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 # -----------------------------------------------------------------------------------------------------------------#
 
@@ -402,18 +413,18 @@ def gerer_evenement(case):
         choix_combat_temple = input(Fore.RED + Style.BRIGHT +"Voulez-vous affronter la créature du Temple des Souvenirs ? (Oui/Non) "+ Fore.RESET + Style.RESET_ALL).lower()
 
         if choix_combat_temple == "oui":
-            print("Vous décidez de défier la créature du Temple des Souvenirs. Le combat est intense, chaque attaque déchaînant des éclairs de mémoire.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous décidez de défier la créature du Temple des Souvenirs. Le combat est intense, chaque attaque déchaînant des éclairs de mémoire.")
             print("À mesure que vous triomphez, la créature s'incline, reconnaissant votre force et votre volonté de percer les secrets du temple.")
-            print("En vainquant la créature, vous gagnez l'accès aux parties les plus profondes du temple, où les véritables énigmes vous attendent.")
+            print("En vainquant la créature, vous gagnez l'accès aux parties les plus profondes du temple, où les véritables énigmes vous attendent."+Fore.RESET + Style.RESET_ALL)
             TempleDesSouvenirs = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
-            print("Vous choisissez de ne pas combattre la créature du Temple des Souvenirs, optant plutôt pour une approche pacifique.")
+            print(Fore.MAGENTA + Style.BRIGHT +"Vous choisissez de ne pas combattre la créature du Temple des Souvenirs, optant plutôt pour une approche pacifique.")
             print("En utilisant votre sagesse, vous parvenez à apaiser la créature, montrant que votre quête est guidée par la recherche de connaissance.")
-            print("La créature, impressionnée par votre respect, vous guide vers les archives les plus profondes du temple, révélant des vérités enfouies.")
+            print("La créature, impressionnée par votre respect, vous guide vers les archives les plus profondes du temple, révélant des vérités enfouies."+Fore.RESET + Style.RESET_ALL)
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     elif case == "Temple des Souvenirs" and TempleDesSouvenirs:
-        print("Rebonjour dans le Temple des Souvenirs ! Les colonnes majestueuses, les arches élégantes et les souvenirs de l'affrontement avec la créature ancienne reviennent à votre esprit.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Rebonjour dans le Temple des Souvenirs ! Les colonnes majestueuses, les arches élégantes et les souvenirs de l'affrontement avec la créature ancienne reviennent à votre esprit."+Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
 # -----------------------------------------------------------------------------------------------------------------#
@@ -433,52 +444,252 @@ def gerer_evenement(case):
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     
     elif case == "Porte des Étoiles" and PorteDesEtoiles:
-        print("Vous vous tenez une fois de plus devant la Porte des Étoiles, la clairière mystique et les symboles célestes vous rappelant votre précédent passage.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Vous vous tenez une fois de plus devant la Porte des Étoiles, la clairière mystique et les symboles célestes vous rappelant votre précédent passage."+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
 # -----------------------------------------------------------------------------------------------------------------#
 
 # -----------------------------------------------------------------------------------------------------------------#
     elif case == "Collines d'Azur" and not CollinesDazur:
-        print("Les Collines d'Azur s'étendent à perte de vue, leurs pentes douces et verdoyantes baignées par la lumière douce du soleil.")
+        print(Fore.MAGENTA + Style.BRIGHT +"Les Collines d'Azur s'étendent à perte de vue, leurs pentes douces et verdoyantes baignées par la lumière douce du soleil.")
         print("Des fleurs sauvages égayent le paysage d'une palette de couleurs vives, créant une symphonie visuelle.")
         print("Des rivières cristallines serpentent entre les collines, apportant avec elles une mélodie apaisante.")
-        print("L'air est empreint du parfum sucré des herbes sauvages, faisant de cet endroit un havre de paix au sein de la nature.")
+        input("L'air est empreint du parfum sucré des herbes sauvages, faisant de cet endroit un havre de paix au sein de la nature.\n...")
 
         print("\nLes Collines d'Azur sont réputées pour leur beauté sereine et leurs secrets cachés.")
         print("Alors que vous explorez ces vastes étendues, un murmure mystique dans le vent éveille votre curiosité.")
-        print("Les anciennes légendes racontent que ces collines renferment des énergies magiques, un pouvoir en harmonie avec la nature elle-même.")
+        input("Les anciennes légendes racontent que ces collines renferment des énergies magiques, un pouvoir en harmonie avec la nature elle-même.\n...")
 
         print("\nÀ mesure que vous gravissez les collines, une présence douce se fait sentir.")
         print("Un esprit bienveillant de la nature, un Gardien d'Azur, apparaît devant vous.")
         print("Il vous salue avec une aura apaisante, révélant que les collines sont un sanctuaire protégé.")
-        print("Le Gardien d'Azur offre son savoir aux âmes respectueuses de la nature.")
+        input("Le Gardien d'Azur offre son savoir aux âmes respectueuses de la nature.\n...")
 
         print("\nSoudain, votre intuition vous guide vers une clairière isolée.")
         print("Au creux d'un vieux chêne, vous découvrez un coffre secret.")
         print("Son bois est orné de symboles mystiques, et une énergie magique émane de son contenu.")
-        print("Vous vous demandez quels trésors et secrets il pourrait renfermer.")
+        input("Vous vous demandez quels trésors et secrets il pourrait renfermer.\n...")
 
-        # Découverte de la potion de défense
         print("À l'intérieur du coffre, vous trouvez une potion scintillante aux reflets azur.")
         print("Cette potion de défense semble dégager une aura protectrice.")
-        print("Elle pourrait s'avérer utile dans les épreuves à venir. Que choisirez-vous de faire avec cette précieuse trouvaille?")
+        input("Elle pourrait s'avérer utile dans les épreuves à venir. Que choisirez-vous de faire avec cette précieuse trouvaille?\n..."+ Fore.RESET + Style.RESET_ALL)
+
+        print(Fore.WHITE + Style.DIM +"Vous avez obtenu une potion de défence" + Fore.RESET + Style.RESET_ALL)
         joueur.add_item(defpotion)
+        print("     -- potion de Defence +1")
+        input("...")
+
         print(Fore.WHITE + Style.DIM + "Vous avez obtenu une potion de défence" + Fore.RESET + Style.RESET_ALL)
 
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     
     elif case == "Collines d'Azur" and CollinesDazur:
-        print("Vous vous retrouvez une fois de plus parmi les Collines d'Azur,")
+        print(Fore.MAGENTA + Style.BRIGHT +"Vous vous retrouvez une fois de plus parmi les Collines d'Azur,"+ Fore.RESET + Style.RESET_ALL)
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
 # -----------------------------------------------------------------------------------------------------------------#
 
 # -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Falaises du Serpent" and not FalaisesDuSerpent:
+        print(Fore.MAGENTA + Style.BRIGHT +"Les Falaises du Serpent s'élèvent majestueusement au-dessus de la mer tumultueuse,")
+        print("leurs sommets effleurant les nuages. Les parois rocheuses portent les cicatrices du temps,")
+        input("sculptées par les vagues et les vents violents.\n...")
+
+        print("\nLes Falaises du Serpent, imprégnées de mystère et de danger, sont réputées pour abriter des légendes marines.")
+        print("Alors que vous parcourez les sentiers escarpés, le rugissement de la mer se mêle au hurlement du vent.")
+        input("Les anciennes histoires parlent d'un pouvoir caché au cœur de ces falaises, un secret que seuls les intrépides osent découvrir.")
+
+        print("\nAu détour d'une corniche, vous découvrez une ouverture dissimulée dans la roche, révélant une caverne secrète.\n...")
+        print("À l'intérieur, la lueur mystique d'un objet énigmatique attire votre regard.")
+        input("Un artefact oublié par le temps repose au cœur de cette caverne, émettant une énergie qui palpite en harmonie avec le tumulte de la mer en contrebas.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.GREEN + "Vous avez obtenu un artefact: deceptiondagger" + Fore.RESET)
+        print("")
+        joueur.add_item(deceptiondagger)
+        print("    Deceptiondagger --  +1")
+        input("...")
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
     
+    elif case == "Falaises du Serpent" and FalaisesDuSerpent:
+        print(Fore.MAGENTA + Style.BRIGHT +"Vous vous tenez à nouveau sur les Falaises du Serpent,")
+        print("le tumulte de la mer et les parois rocheuses vous rappelant votre précédente visite."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 # -----------------------------------------------------------------------------------------------------------------#
 
 # -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Plage des Songes" and not PlageDesSonges:
+        print(Fore.MAGENTA + Style.BRIGHT +"La Plage Des Songes s'étend à perte de vue, un paradis de sable doré caressé par les vagues douces de l'océan.")
+        print("Les palmiers élancés dansent au rythme du vent léger, offrant des ombres bienvenues.")
+        print("Le soleil peint le ciel d'une palette de teintes chaudes alors qu'il plonge lentement vers l'horizon.")
+        input("Des coquillages et des coraux éparpillés ajoutent une touche pittoresque à cette oasis tranquille.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+    
+    elif case == "Plage Des Songes" and PlageDesSonges:
+        print(Fore.MAGENTA + Style.BRIGHT +"Vous foulez une fois de plus le sable doré de la Plage Des Songes,")
+        print("les vagues douces de l'océan et la brise légère vous rappelant votre précédente visite.")
+        input("Les histoires de rêves de cette plage résonnent dans votre mémoire\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Grottes de l'Abîme" and not GrottesDelAbime:
+        print(Fore.MAGENTA + Style.BRIGHT +"Les Grottes de l'Abîme se déploient comme un labyrinthe sombre sous la surface de la terre.")
+        print("Les parois rocheuses portent les stigmates du temps, des formations de stalactites et stalagmites créant une atmosphère mystérieuse.")
+        input("Des rivières souterraines murmurent des secrets anciens, tandis que des cristaux phosphorescents jettent une lueur spectrale sur votre chemin.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+    elif case == "Grottes de l'Abîme" and GrottesDelAbime:
+        print(Fore.MAGENTA + Style.BRIGHT +"Vous vous aventurez de nouveau dans les profondeurs des Grottes de l'Abîme,")
+        print("leurs passages obscurs et les cristaux phosphorescents vous rappelant votre précédente visite.")
+        input("Les murmures des rivières souterraines et l'ombre mystique des stalactites et stalagmites réveillent les souvenirs\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Chutes d'Ébène" and not ChutesDebene:
+        print(Fore.MAGENTA + Style.BRIGHT +"Les Chutes d'Ébène dévalent majestueusement des hauteurs, créant un tableau spectaculaire de puissance naturelle.")
+        print("Les eaux tumultueuses glissent le long de parois rocheuses revêtues d'une végétation luxuriante.")
+        print("Des arcs-en-ciel dansent dans les embruns, ajoutant une touche magique à cette scène grandiose.")
+        input("Le rugissement assourdissant des chutes résonne dans toute la vallée, créant une symphonie indomptée.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+    elif case == "Chutes d'Ébène" and ChutesDebene:
+        print(Fore.MAGENTA + Style.BRIGHT +"De nouveau, vous vous tenez au sommet des Chutes d'Ébène,")
+        print("observant le spectacle majestueux des eaux tumultueuses et des arcs-en-ciel dansants.")
+        input("Les légendes des bénédictions ancestrales et du Gardien des Eaux vous reviennent en mémoire\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Lac des Mystères" and not LacDesMysteres:
+        print(Fore.MAGENTA + Style.BRIGHT +"Le Lac des Mystères repose dans un écrin de verdure, ses eaux calmes reflétant la magie du ciel et de la forêt environnante.")
+        print("Des nénuphars parsèment la surface, ajoutant une touche de couleur à la quiétude du paysage.\n...")
+        input("Des arbres anciens bordent le lac, témoins silencieux d'histoires enfouies sous les eaux. Une aura de mystère flotte dans l'air, créant une atmosphère envoûtante.")
+
+        print("\nLe Lac des Mystères est réputé pour être un lieu où la frontière entre le monde réel et le surnaturel s'amincit.")
+        print("En vous approchant de ses rives, vous ressentez une énergie particulière.")
+        print("Les récits parlent de rencontres avec des esprits aquatiques et de visions prophétiques qui émergent de ses profondeurs.")
+        input("Alors que vous explorez les abords du lac, une brume légère se forme, dansant au gré du vent.\n...")
+
+        print("Des murmures indistincts vous parviennent, comme des échos d'un passé lointain.")
+        print("Les légendes du Lac des Mystères semblent prendre vie.")
+        print("En fouillant les environs, vous découvrez une potion étrange, imbue d'une énergie d'attaque mystique.")
+        input("Ses reflets dans l'eau calme du lac ajoutent une dimension magique à cette trouvaille.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.RED + Style.DIM + "Vous avez obtenu une potion de d'attaque" + Fore.RESET + Style.RESET_ALL)
+        joueur.add_item(AttackPotion)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+    elif case == "Lac des Mystères" and LacDesMysteres:
+        print(Fore.MAGENTA + Style.BRIGHT +"À nouveau, vous vous tenez sur les rives paisibles du Lac des Mystères,")
+        print("ses eaux calmes et la brume légère vous rappelant votre précédente visite.")
+        print("Les murmures mystiques et les nénuphars évoquent les souvenirs des mystères enfouis sous la surface.")
+        input("La potion d'attaque que vous aviez découverte jadis continue d'émaner une énergie mystique\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Ruines d'Opale" and not RuinesDopale:
+        print(Fore.MAGENTA + Style.BRIGHT +"Les Ruines d'Opale s'étendent comme les vestiges d'une civilisation ancienne, émergeant des sables du temps.")
+        print("Les colonnes brisées et les arches délabrées racontent l'histoire d'une grandeur passée.")
+        print("Des motifs mystiques sont gravés dans la pierre, témoins silencieux de la magie qui imprégnait autrefois ces lieux.")
+        input("Des lueurs douces émanent des recoins obscurs, conférant une ambiance mystérieuse à ce lieu oublié.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+    elif case == "Ruines d'Opale" and RuinesDopale:
+        print(Fore.MAGENTA + Style.BRIGHT +"Vous marchez à nouveau entre les colonnes brisées des Ruines d'Opale,")
+        input("leur histoire silencieuse et les motifs mystiques vous rappelant votre précédente visite.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Canyon de l'Écho" and not CanyonDeLecho:
+        print(Fore.MAGENTA + Style.BRIGHT +"Le Canyon de l'Écho s'étend comme une cicatrice profonde dans la terre,")
+        print("les parois de pierre rougeoyante témoignant de l'érosion du temps.")
+        print("Des formations rocheuses imposantes se dressent comme des sentinelles, créant une symphonie de formes sculptées par le vent.")
+        input("Les échos résonnent dans le canyon, ajoutant une dimension mystique à ce paysage spectaculaire.\n...")
+
+        print("\nLe Canyon de l'Écho est un lieu où les murmures du vent et les échos mystérieux semblent raconter des histoires oubliées.")
+        print("En vous aventurant dans ses dédales, vous percevez une énergie vibrante.")
+        print("Les légendes parlent de passages secrets et de cavernes cachées, dissimulés dans les replis de ces parois abruptes.")
+        print("Alors que vous explorez les recoins du canyon, un écho particulier attire votre attention.")
+        print("Il résonne depuis une paroi rocheuse, comme une invitation à découvrir ce qui se cache derrière.")
+        print("En vous approchant, une ouverture dissimulée se révèle, menant à une grotte secrète.")
+        input("Au cœur de cette grotte, vous découvrez une potion de vie étincelante, prête à restaurer votre vitalité.\n..."+ Fore.RESET + Style.RESET_ALL)
+        joueur.add_item(healpotion)
+
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+    elif case == "Canyon de l'Écho" and CanyonDeLecho:
+        print(Fore.MAGENTA + Style.BRIGHT +"À nouveau, vous vous tenez au bord du Canyon de l'Écho,")
+        print("ses parois rouges et les échos résonnants vous rappelant votre précédente visite.")
+        input("Les légendes des passages secrets et des cavernes cachées ressurgissent dans votre mémoire\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Îles des Sirens" and not IlesDesSirens:
+        print(Fore.MAGENTA + Style.BRIGHT +"Les Îles des Sirens se dressent comme des joyaux éparpillés sur la mer scintillante.")
+        print("Les plages de sable fin sont caressées par des vagues douces, tandis que des palmiers majestueux dansent au gré du vent.")
+        print("Des chants mélodieux flottent dans l'air, ajoutant une atmosphère enchanteresse à ces îles paradisiaques.")
+        input("Des récifs coralliens aux couleurs vives encadrent les rivages, abritant une vie marine foisonnante.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+    
+    elif case == "Îles des Sirens" and IlesDesSirens:
+        print(Fore.MAGENTA + Style.BRIGHT +"De nouveau, vous contemplez les Îles des Sirens,")
+        input("leurs plages de sable fin, les vagues caressantes et les chants mélodieux vous rappelant votre précédente visite.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Désert d'Ivoire" and not DesertDivoire:
+        print(Fore.MAGENTA + Style.BRIGHT +"Le Désert d'Ivoire s'étend à perte de vue, ses dunes de sable blanc créant un paysage éblouissant sous le soleil ardent.")
+        print("Des oasis émergent çà et là, offrant une pause bienvenue dans l'immensité désertique.")
+        print("Des formations rocheuses sculptées par le vent ajoutent une touche artistique à ce tableau aride.")
+        input("Les tempêtes de sable occasionnelles apportent une aura mystique à ce désert infini.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+    elif case == "Désert d'Ivoire" and DesertDivoire:
+        print(Fore.MAGENTA + Style.BRIGHT +"De nouveau, vous marchez à travers les dunes infinies du Désert d'Ivoire,")
+        print("ses étendues arides, les oasis discrètes et les tempêtes de sable évoquant votre précédente visite."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Terres de Brume" and not TerresDeBrume:
+        print(Fore.MAGENTA + Style.BRIGHT +"Les Terres de Brume sont enveloppées d'une écharpe mystique,")
+        print("où des nappes de brume flottent entre des arbres centenaires.")
+        print("Des ruines antiques émergent de la brume, ajoutant une touche de nostalgie à ce paysage envoûtant.")
+        print("Des lumières douces traversent les brumes épaisses, créant une atmosphère irréelle.")
+        input("Les chants d'oiseaux lointains et le bruissement des feuilles ajoutent une dimension magique à ces terres énigmatiques.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+    elif case == "Terres de Brume" and TerresDeBrume:
+        print(Fore.MAGENTA + Style.BRIGHT +"De nouveau, vous marchez à travers les sentiers brumeux des Terres de Brume,")
+        input("les nappes de brume, les ruines antiques et les lumières douces vous rappelant votre précédente visite.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Marais des Ombres" and not MaraisDesOmbres:
+        print(Fore.MAGENTA + Style.BRIGHT +"Les Marais des Ombres s'étendent avec une aura sinistre,")
+        print("où des eaux stagnantes reflètent la canopée dense des arbres tordus.")
+        print("Des branches dénudées s'étirent comme des doigts griffus vers le ciel voilé.")
+        print("Des brumes épaisses flottent au ras de l'eau, ajoutant une atmosphère lugubre à ces marais mystérieux.")
+        input("Des cris d'animaux nocturnes résonnent dans l'obscurité, créant une symphonie sinistre.\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+    elif case == "Marais des Ombres" and MaraisDesOmbres:
+        print(Fore.MAGENTA + Style.BRIGHT +"De nouveau, vous vous aventurez à travers les sentiers boueux des Marais des Ombres,")
+        print("les eaux stagnantes, les arbres tordus et les brumes épaisses évoquant votre précédente visite.")
+        input("Les légendes des esprits vengeurs, des créatures des ténèbres et des passages secrets ressurgissent dans votre mémoire\n..."+ Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+ # -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#       
+    
+ # -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#    
 # Nord Est Sud Ouest
 
 
