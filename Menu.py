@@ -76,9 +76,10 @@ if choice == "1":
         player_name = input("Entrer le nom de votre personnage: ")
         print(f"Ravie de vous rencontrez {player_name}")
         time.sleep(0.3)
+        save_game(player_name)
         introduction()
         # Sauvegarder la nouvelle partie
-        save_game(player_name)
+        
         
 elif choice == "2":
 
