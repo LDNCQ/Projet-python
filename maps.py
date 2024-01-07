@@ -824,7 +824,7 @@ def deplacer_joueur():
                 historique_positions.append(position_joueur.copy())
 
 # Utilisation de la fonction
-deplacer_joueur()
+# deplacer_joueur()
 
 
 
