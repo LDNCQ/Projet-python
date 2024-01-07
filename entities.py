@@ -1,6 +1,7 @@
 from items import *
 import random
 import time
+from colorama import Fore, Back, Style
 
 """   
     name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
@@ -17,8 +18,9 @@ class Entity:
         self.name = name
         self.max_hp = 10
         self.hp = 10  # Commence avec la santé maximale
-        self.atk = 5
+        self.atk = 6
         self.defense = 5
+        self.is_stunned = False
 
     def show_stats(self):
         print(f"Stats de {self.name}")
@@ -96,6 +98,9 @@ class Player(Entity):
         self.xp = 0
         self.xp_until_lvlup = 20  # Valeur à ajuster selon votre logique de jeu
         self.inventory = []
+        self.spe_cd = 0
+        self.strong_cd = 0
+        self.flee = False
         
     def level_up(self):
         self.max_hp += 6
@@ -128,78 +133,78 @@ class Player(Entity):
     def add_item(self, item):
         self.inventory.append(item)
              
-    """
-    Potion de défense = defpotion
-    Potion d'attaque = atkpotion
-    Potion de heal = healpotion
-    """
     
     def use_item(self, item):
-        if isinstance(item, Items):
-            if item in self.inventory:
-                item.use(self)
+        if isinstance(item, Items):                         #Potion de défense = defpotion    
+            if item in self.inventory:                      #Potion d'attaque = atkpotion
+                item.use(self)                              #Potion de soin = healpotion
                 self.inventory.remove(item)
             else:
                 print(f"{self.name} ne possède pas {item.name} dans son inventaire.")
         else:
             print("Cet objet ne peut pas être utilisé")
                 
-            
-
     def xp_gain(self, xp_gained):
         self.xp += xp_gained
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
                     
-    def special_attack(self, target):
-        pass      
-            
-            
+          
+     #PARTIE COMBAT     
+               
             
     def start_combat(self, target):
         print(f"Vous entrez en combat contre {target.name}")
         #Boucle tour par tour
-        flee = False
-        while flee == False:
-            while not target.is_defeated() and not self.is_defeated():
+        self.flee = False
+        while not target.is_defeated() and not self.is_defeated():
+            if self.strong_cd > 0:
+                self.strong_cd -= 1
+            if self.spe_cd > 0:
+                self.spe_cd -= 1
+                
+            if self.is_stunned:
+                print(f"{self.name} est étourdi et est incapable d'attaquer")
+                self.is_stunned = False
+                time.sleep(1.5)
+            else:
                 self.take_turn(target)
-                if not target.is_defeated():
+                
+            if not target.is_defeated():
+                if target.is_stunned:
+                    print(f"{target.name} est étourdi et est incapable d'attaquer")
+                    target.is_stunned = False
+                    time.sleep(1.5)
+                    
+                elif self.flee == True:
+                    break
+
+                else:
                     target.take_turn(self)
+                
             if target.is_defeated():
                 print("Vous gagnez le combat !")
+                target.hp += target.max_hp
+                break
             else:
-                game_over()
+                print("game_over()")
+                self.hp += 5
+                break
                
                 
-    def combat_use_item(self):
-        if len(self.inventory) == 0:
-            print("Vous ne possedez aucun objet")
-        else:
-            while True:
-                try:
-                    for i, item in enumerate(self.inventory):
-                        print(f"{i}. {item.name}")
-                    choice = int(input("Quel objet souhaitez vous utiliser ? "))
-                    if 0 <= choice < len(self.inventory):
-                        self.use_item(self.inventory[choice])
-                        break
-                    else:
-                        print("Choix invalide. Veuillez entrer un numéro d'objet valide.")
-                except ValueError:
-                    print("Ce n'est pas un objet utilisable")
+   
             
-                
-            
-            
-                
+         
     def take_turn(self, target):
         while True:
-            print("1. Attaque simple")
-            print("2. Attaque spéciale (nom a modifier)")
-            print("3. Utiliser un objet")
-            print("4. Afficher ses statistiques")
-            print("5. Afficher les statistiques de l'ennemi")
-            print("6. Fuir le combat")
+            print(Fore.GREEN + "\n1. Attaque simple")
+            print("2. Coup bas")
+            print("3. Fracas")
+            print("4. Utiliser un objet")
+            print("5. Afficher ses statistiques")
+            print("6. Afficher les statistiques de l'ennemi")
+            print("7. Informations sur les compétences")
+            print("8. Fuir le combat")
             
             try:
                 action = int(input())
@@ -208,46 +213,121 @@ class Player(Entity):
                     break
                     
                 elif action == 2:
-                    self.special_attack(target)
-                    break
-                    
+                    if deceptiondagger in self.inventory:
+                        if self.spe_cd != 0:
+                            print("Cette attaque se recharge, patience !")
+                        else:
+                            self.special_attack(target)
+                            break
+                    else:
+                        print(f"Vous devez posséder {deceptiondagger.name} pour pouvoir utiliser cette compétence")
+                        time.sleep(2)
+                        
                 elif action == 3:
-                    self.combat_use_item()
-                    break
-                    
+                    if self.strong_cd != 0:
+                        print("Cette attaque se recharge, patience !")
+                    else:
+                        self.strong_attack(target)
+                        break
+                        
                 elif action == 4:
+                    if len(self.inventory) == 0:
+                        print("Vous ne possedez aucun objet")
+                        time.sleep(2)
+                    else:
+                        self.combat_use_item()
+                        break
+                        
+                elif action == 5:
                     self.show_stats()
                     time.sleep(2)
                 
-                elif action == 5:
+                elif action == 6:
                     self.show_ennemy_stats(target)
                     time.sleep(2)
                 
-                elif action == 6:
-                    print("Vous avez fui le combat.")
+                elif action == 7:
+                    print(Fore.CYAN + "Attaque simple")
+                    time.sleep(0.3)
+                    print("Une attaque des plus basiques, peut être critique\n")
+                    time.sleep(1.5)
+                    print("Coup bas")
+                    time.sleep(0.3)
+                    print("Une technique infligeant des dégâts réduits mais avec une probabilité significative d'immobiliser l'ennemi. Son exécution nécessite la possession l'objet Dague de Tromperie.\n ")
+                    time.sleep(1.5)
+                    print("Fracas")
+                    time.sleep(0.3)
+                    print("Une frappe d'une puissance dévastatrice, provoquant des dégâts considérables, mais soumise à une faible chance d'échouer.")
+                    time.sleep(3)
+                    
+                elif action == 8:
                     flee_chance = 0.5
                     if random.random() > flee_chance:
-                        flee = True
+                        print("Vous avez fui le combat.")
+                        self.flee = True
+                        break
                     else:
                         print("Vous n'avez pas réussi à fuir")
-                    break
-                    
+                        time.sleep(2)
+                        break
+                
                 else:
                     print("Action invalide. Veuillez choisir une action valide.")
-                    
-                    
+    
             except ValueError:                    
                 print("Action invalide. Veuillez choisir une action valide.")
                 
-                
+    def special_attack(self, target):
+            self.spe_cd = 2
+            stun_rate = 0.6
+            crit_rate = 0.15
+            if random.random() < stun_rate:
+                target.is_stunned = True
+                print(f"{target.name} a été étourdi")
+            damage = max(0, (self.atk*1.2) - target.defense)
+            if random.random() < crit_rate:
+                damage = (self.atk*1.8) - target.defense
+                print("Coup critique !") 
+            target.hp -= int(damage)
+            print(f"{self.name} inflige {int(damage)} points de dégats à {target.name} !")
+            time.sleep(2)                
         
+    def strong_attack(self, target):
+        miss_rate = 30
+        crit_rate = 0.10
+        if random.random() < miss_rate:
+            damage = (self.atk*2.2) - target.defense
+            if random.random() < crit_rate:
+                damage = (self.atk*3.7) - target.defense
+                print("Coup critique !")
+            target.hp -= int(damage)
+            print(f"{self.name} inflige {int(damage)} points de dégats à {target.name} !")
+            self.strong_cd = 3
+            time.sleep(2)   
+        else:
+            print(f"{self.name} a raté sa cible !")
         
+    def combat_use_item(self):
+        while True:
+            try:
+                for i, item in enumerate(self.inventory):
+                    print(f"{i}. {item.name}")
+                choice = int(input("Quel objet souhaitez vous utiliser ? "))
+                if 0 <= choice < len(self.inventory):
+                    self.use_item(self.inventory[choice])
+                    break
+                else:
+                    print("Choix invalide. Veuillez entrer un numéro d'objet valide.")
+                    time.sleep(2)
+            except ValueError:
+                print("Ce n'est pas un objet utilisable")    
+                time.sleep(2)
         
         
 class Monster(Entity):
     def __init__(self, name:str):
-        self.name = name
-        self.level = joueur.level+(random.randint(0,2))
+        super().__init__(name=name)
+        self.level = player.level+(random.randint(0,2))
         self.atk = 5+self.level
         self.defense = 3+self.level
         self.max_hp = 11+self.level
@@ -257,11 +337,9 @@ class Monster(Entity):
         self.attack(target)
         
 
-joueur = Player("à changer au lancement du jeu")
+player = Player(input("Choisissez votre pseudo :"))
+m = Monster("test monstre")
             
-    #def monster(self, name : str)
-    #FAIRE FONCTION MONSTRE
-        
 
         
 
