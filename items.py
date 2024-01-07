@@ -1,13 +1,15 @@
 from entities import *
-
 class Items:
-    def use(self, player):
-        pass  # Méthode générale pour l'utilisation des objets, à définir dans chaque sous-classe
+    def __init__(self):
+        pass
 
-class HealingPotion(Items):
+class Consumable_Items(Items):
+    def use(self, player):
+        pass
+
+class HealingPotion(Consumable_Items):
     def __init__(self):
         self.name = "Potion de soin"
-
         self.stat_boost = 10
 
     def use(self, player):
@@ -16,7 +18,7 @@ class HealingPotion(Items):
             player.hp = player.max_hp
         print(f"{player.name} a utilisé une {self.name} et a récupéré {self.stat_boost} points de vie.")
         
-class AttackPotion(Items):
+class AttackPotion(Consumable_Items):
     def __init__(self):
         self.name = "Potion d'attaque"
         self.stat_boost = 5
@@ -26,7 +28,7 @@ class AttackPotion(Items):
         print(f"{player.name} a utilisé une {self.name} et a gagné {self.stat_boost} points de d'attaque.")
 
 
-class DefensePotion(Items):
+class DefensePotion(Consumable_Items):
     def __init__(self):
         self.name = "Potion de défense"
         self.stat_boost = 4
@@ -35,7 +37,12 @@ class DefensePotion(Items):
         player.defense += self.stat_boost
         print(f"{player.name} a utilisé une {self.name} et a gagné {self.stat_boost} points de défense.")
 
+class DeceptionDagger(Items):
+    def __init__(self):
+        self.name = "Dague de Tromperie"
+        self.description = "Une dague sournoise, tranchante et agile. Chaque attaque inflige des dégâts modérés, mais avec une forte chance d'étourdir l'ennemi. Idéale pour les attaques rapides et les tactiques rusées."
 
 healpotion = HealingPotion()
 atkpotion = AttackPotion()
 defpotion = DefensePotion()
+deceptiondagger = DeceptionDagger()
