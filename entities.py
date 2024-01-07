@@ -1,4 +1,6 @@
 from items import *
+from main import *
+from maps import *
 import random
 import time
 from colorama import Fore, Back, Style
@@ -11,6 +13,7 @@ from colorama import Fore, Back, Style
     Pour créer une classe joueur
     p1 = Player("Joueur")
 """
+
 
     
 class Entity:
@@ -43,51 +46,12 @@ class Entity:
         
     def is_defeated(self):
         return self.hp <= 0
-        game_over()
+        
     
     def take_turn(self, target):
         pass
         
         
-        
-        
-        
-    #UTILISATION EXCEPTIONNELLE
-
-    def change_maxhp(self, hp_amount):
-        self.max_hp += hp_amount
-        
-        #Ajuster les hp si les hp max sont inférieurs aux hp
-        if self.max_hp < self.hp:
-            self.hp = self.max_hp
-            
-        if self.max_hp <= 0:
-            self.max_hp = 1
-            print("HP minimum atteint (1)")
-        
-    def change_hp(self, hp_amount):
-        self.hp += hp_amount
-        if self.hp > self.max_hp:
-            self.hp = self.max_hp
-        
-        #A AJUSTER EN IMPLEMENTANT LE GAMEOVER
-        if self.hp <= 0:
-            game_over()
-    
-    
-    def change_atk(self, atk_amount):
-        self.atk += atk_amount
-        if self.atk <= 0:
-            self.afk = 1
-            print("Attaque minimale atteinte (1)")
-                
-    def change_def(self, def_amount):
-        self.defense += def_amount
-        if self.defense <= 0:
-            self.defense = 1
-            print("Defense minimale atteinte (1)")
-
-
 
     
             
@@ -101,6 +65,7 @@ class Player(Entity):
         self.spe_cd = 0
         self.strong_cd = 0
         self.flee = False
+        self.used_items = []
         
     def level_up(self):
         self.max_hp += 6
@@ -145,7 +110,8 @@ class Player(Entity):
             print("Cet objet ne peut pas être utilisé")
                 
     def xp_gain(self, xp_gained):
-        self.xp += xp_gained
+        self.xp += int(xp_gained)
+        print("Vous avez gagné {int(xp_gained)} points d'expérience")
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
                     
@@ -184,16 +150,29 @@ class Player(Entity):
                 
             if target.is_defeated():
                 print("Vous gagnez le combat !")
-                target.hp += target.max_hp
+                target.hp = target.max_hp
+                self.xp_gain(target.lvl*1.5)
+                while len(self.used_items) > 0:  
+                    if self.used_items[0] == atkpotion:
+                        self.atk -= 5
+                    if self.used_items[0] == defpotion:
+                        self.defense -= 4
+                    self.used_items.pop(0)
                 break
             else:
-                print("game_over()")
-                self.hp += 5
+                while len(self.used_items) > 0:  
+                    if self.used_items[0] == atkpotion:
+                        self.atk -= 5
+                    if self.used_items[0] == defpotion:
+                        self.defense -= 4
+                    self.used_items.pop(0)
+                game_over()
                 break
                
                 
    
-            
+    def is_defeated(self):
+        game_over()            
          
     def take_turn(self, target):
         while True:
@@ -270,12 +249,12 @@ class Player(Entity):
                         print("Vous n'avez pas réussi à fuir")
                         time.sleep(2)
                         break
-                
+                    
                 else:
                     print("Action invalide. Veuillez choisir une action valide.")
-    
             except ValueError:                    
                 print("Action invalide. Veuillez choisir une action valide.")
+                
                 
     def special_attack(self, target):
             self.spe_cd = 2
@@ -337,8 +316,7 @@ class Monster(Entity):
         self.attack(target)
         
 
-player = Player(input("Choisissez votre pseudo :"))
-m = Monster("test monstre")
+
             
 
         

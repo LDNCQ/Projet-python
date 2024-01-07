@@ -741,6 +741,14 @@ def gerer_evenement(case):
                 GlacierDuSilence = True
 
         # ggEZ
+        print("\nFélicitations, vaillant explorateur!")
+        print("Avec persévérance et courage, vous avez triomphé du Gardien du Silence,")
+        print("libérant les pouvoirs gelés enfouis dans le Glacier du Silence.")
+        print("Les terres mystérieuses s'étendent devant vous, dévoilant des secrets oubliés et des trésors cachés.")
+        print("Vous êtes désormais honoré comme un héros, ayant écrit une légende inoubliable dans ces contrées gelées.")
+        print("Que votre aventure continue dans d'autres mondes et que vos exploits soient chantés à travers les époques!")
+        print("\nMerci d'avoir joué au jeu. À bientôt pour de nouvelles explorations et découvertes!")
+
 
     elif case == "Glacier du Silence" and GlacierDuSilence:
         print("\nVous ressentez une vague de prudence vous envahir.")
@@ -786,31 +794,32 @@ def deplacer(direction, position_joueur):
 # sauvegarde de la position du joueur
 historique_positions = [position_joueur.copy()]
 
-while True:
-    # Boucle de déplacement
-    while dans_boucle_deplacement:
-        # dmd au joueur la direction
-        direction = input("Entrez la direction nord, est, sud, ouest: \n>").lower()
-        # ff
-        if direction == 'ff':
-            dans_boucle_deplacement = False
-            quitter = input("etes vous sur de quitter ? la partie ne sera pas sauvegardée !!! (oui ou non) \n> :")
-            if quitter == "oui":
-                print("GAME OVER")
-                play_obj.stop()
-                break
-            elif quitter == 'non':
-                dans_boucle_deplacement = True
+def deplacer_joueur():
+    while True:
+        # Boucle de déplacement
+        while dans_boucle_deplacement:
+            # dmd au joueur la direction
+            direction = input("Entrez la direction nord, est, sud, ouest: \n>").lower()
+            # ff
+            if direction == 'ff':
+                dans_boucle_deplacement = False
+                quitter = input("etes vous sur de quitter ? la partie ne sera pas sauvegardée !!! (oui ou non) \n> :")
+                if quitter == "oui":
+                    print("GAME OVER")
+                    play_obj.stop()
+                    break
+                elif quitter == 'non':
+                    dans_boucle_deplacement = True
 
-        # Copier les coordonnées actuelles du joueur
-        ancienne_position = position_joueur.copy()
+            # Copier les coordonnées actuelles du joueur
+            ancienne_position = position_joueur.copy()
 
-        # Mettre à jour les coordonnées du joueur
-        deplacement_reussi = deplacer(direction, position_joueur)
+            # Mettre à jour les coordonnées du joueur
+            deplacement_reussi = deplacer(direction, position_joueur)
 
-        # copier la position du joueur avant le combat
-        if deplacement_reussi:
-            historique_positions.append(position_joueur.copy())
+            # copier la position du joueur avant le combat
+            if deplacement_reussi:
+                historique_positions.append(position_joueur.copy())
 
 
                     
