@@ -16,15 +16,31 @@ def introduction():
     print("Depuis des siècles, des monstres terrifiants terrorisent les villages, semant le chaos et la destruction.")
     time.sleep(0.3)
     print("Votre quête est de pourchasser ces créatures maléfiques et de ramener la paix dans le royaume.")
+    time.sleep(0.3)
     print("Préparez-vous, brave chevalier, l'aventure commence !")
     time.sleep(0.3)
-    print("Vous vous tenez devant le château du roi, prêt à partir en quête.")
+    print("Les Îles de l'Aurore sont le point de départ de votre voyage. ")
     time.sleep(0.3)
-    print("Le roi vous a confié la mission de traquer les monstres qui menacent la sécurité du royaume.")
+    print("Alors que vous respirez l'air pur de l'aube, une vieille carte dans votre main indique des terres lointaines remplies de mystères. ")
     time.sleep(0.3)
-    print("Votre première destination est la sombre forêt d'Enigma, où les monstres ont été signalés en grand nombre.")
+    print("Une voix mystique dans votre esprit évoque le destin qui vous attend.")
     time.sleep(0.3)
+    print("Vous êtes le héros choisi, appelé à explorer des contrées inconnues, à affronter des défis et à révéler des secrets millénaires.")
+    time.sleep(0.3)
+    print("Votre première destination est Îles de l'Aurore, un archipel paisible entouré d'eaux scintillantes. Des plages de sable fin bordent les rives, et des arbres luxuriants fournissent une ombre accueillante.")
+    time.sleep(0.3)
+    print(" Des plages de sable fin bordent les rives, et des arbres luxuriants fournissent une ombre accueillante.")
+    time.sleep(0.3)
+    print("Le ciel est baigné de teintes rosées et dorées, créant une atmosphère magique qui donne son nom aux îles. Les doux bruits des vagues bercent les rivages, accueillant les aventuriers intrépides qui débutent leur quête. ")
+    time.sleep(0.3)
+    print("Au loin, un vieux marin vous observe avec un sourire bienveillant.")
+    time.sleep(0.3)
+    print(" Il vous encourage à choisir une direction et à commencer votre quête. Les Îles de l'Aurore, berceau de votre aventure, vous invitent à prendre les premiers pas vers l'inconnu. Oserez-vous répondre à l'appel du destin qui résonne à travers ces îles enchantées?")
+    time.sleep(0.3)
+    
     print("Armez-vous de votre épée, mettez votre armure, et que la quête commence!")
+    
+    
 
 
 
