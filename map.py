@@ -50,11 +50,13 @@ foretDargent = False
 jungleDeLeclipse = False
 TerresDeFer = False
 TempleDesSouvenirs = False
+PorteDesEtoiles = False
+CollinesDazur = False
 
 # pour les event aleatoire de spawn de mobs et loots
 def gerer_evenement(case):
     
-    global itemUtiliser1, itemUtiliser2, itemUtiliser3,itemUtiliser4, itemUtiliser5, itemUtiliser6, foretDargent, jungleDeLeclipse, TerresDeFer, TempleDesSouvenirs
+    global itemUtiliser1, itemUtiliser2, itemUtiliser3,itemUtiliser4, itemUtiliser5, itemUtiliser6, foretDargent, jungleDeLeclipse, TerresDeFer, TempleDesSouvenirs, PorteDesEtoiles, CollinesDazur
 
     if case == "Vallée d'Émeraude" and not itemUtiliser1:
         print(Fore.MAGENTA + Style.BRIGHT + "Vous entrez dans la Vallée d'Émeraude, un sanctuaire magique caché entre les montagnes.")
@@ -417,6 +419,62 @@ def gerer_evenement(case):
 # -----------------------------------------------------------------------------------------------------------------#
 
 # -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Porte des Étoiles" and not PorteDesEtoiles:
+        print(Fore.MAGENTA + Style.BRIGHT +"La Porte des Étoiles trône au cœur d'une clairière ensorcelante, son cadre ancien illuminé par des symboles célestes.")
+        print("Des éclats de lumière stellaire scintillent autour d'elle, créant une ambiance empreinte de magie.")
+        input("L'atmosphère de cet endroit transcende la réalité, invitant chacun à contempler le mystère des étoiles.\n...")
+
+        print("\nLes murmures doux du vent résonnent entre les arbres environnants, ajoutant une touche de sérénité à ce lieu sacré.")
+        input("Lorsque vous vous tenez devant la Porte des Étoiles, vous ressentez une connexion avec l'infini cosmique, une sensation de transcendance qui va au-delà des limites du tangible.\n...")
+
+        print("\nC'est un endroit où le temps semble suspendu, où les étoiles offrent leur lumière bienveillante.")
+        print("Vous avez également la possibilité de vous reposer à la belle étoile, allongé sur l'herbe douce de la clairière.")
+        input("Que ce soit pour méditer, contempler les constellations ou simplement vous ressourcer dans la quiétude, la Porte des Étoiles vous invite à une expérience immersive au cœur de la magie céleste.\n..."+Fore.RESET + Style.RESET_ALL)
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+    
+    elif case == "Porte des Étoiles" and PorteDesEtoiles:
+        print("Vous vous tenez une fois de plus devant la Porte des Étoiles, la clairière mystique et les symboles célestes vous rappelant votre précédent passage.")
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
+    elif case == "Collines d'Azur" and not CollinesDazur:
+        print("Les Collines d'Azur s'étendent à perte de vue, leurs pentes douces et verdoyantes baignées par la lumière douce du soleil.")
+        print("Des fleurs sauvages égayent le paysage d'une palette de couleurs vives, créant une symphonie visuelle.")
+        print("Des rivières cristallines serpentent entre les collines, apportant avec elles une mélodie apaisante.")
+        print("L'air est empreint du parfum sucré des herbes sauvages, faisant de cet endroit un havre de paix au sein de la nature.")
+
+        print("\nLes Collines d'Azur sont réputées pour leur beauté sereine et leurs secrets cachés.")
+        print("Alors que vous explorez ces vastes étendues, un murmure mystique dans le vent éveille votre curiosité.")
+        print("Les anciennes légendes racontent que ces collines renferment des énergies magiques, un pouvoir en harmonie avec la nature elle-même.")
+
+        print("\nÀ mesure que vous gravissez les collines, une présence douce se fait sentir.")
+        print("Un esprit bienveillant de la nature, un Gardien d'Azur, apparaît devant vous.")
+        print("Il vous salue avec une aura apaisante, révélant que les collines sont un sanctuaire protégé.")
+        print("Le Gardien d'Azur offre son savoir aux âmes respectueuses de la nature.")
+
+        print("\nSoudain, votre intuition vous guide vers une clairière isolée.")
+        print("Au creux d'un vieux chêne, vous découvrez un coffre secret.")
+        print("Son bois est orné de symboles mystiques, et une énergie magique émane de son contenu.")
+        print("Vous vous demandez quels trésors et secrets il pourrait renfermer.")
+
+        # Découverte de la potion de défense
+        print("À l'intérieur du coffre, vous trouvez une potion scintillante aux reflets azur.")
+        print("Cette potion de défense semble dégager une aura protectrice.")
+        print("Elle pourrait s'avérer utile dans les épreuves à venir. Que choisirez-vous de faire avec cette précieuse trouvaille?")
+        joueur.add_item(defpotion)
+        print(Fore.WHITE + Style.DIM + "Vous avez obtenu une potion de défence" + Fore.RESET + Style.RESET_ALL)
+
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+    
+    elif case == "Collines d'Azur" and CollinesDazur:
+        print("Vous vous retrouvez une fois de plus parmi les Collines d'Azur,")
+        print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
+
+# -----------------------------------------------------------------------------------------------------------------#
+
+# -----------------------------------------------------------------------------------------------------------------#
     
 # -----------------------------------------------------------------------------------------------------------------#
 
@@ -481,5 +539,4 @@ while True:
             historique_positions.append(position_joueur.copy())
 
 
-    # Boucle de combat (à développer)
                     
