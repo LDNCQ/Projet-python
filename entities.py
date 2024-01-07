@@ -1,5 +1,6 @@
 from items import *
 import random
+import time
 
 """   
     name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
@@ -29,16 +30,18 @@ class Entity:
                 
     def attack(self, target):
         crit_rate = 0.15
+        damage = (self.atk*1.5) - target.defense
         if random.random() < crit_rate:
-            damage = self.atk * 2.2
+            damage = (self.atk*2.3) - target.defense
             print("Coup critique !")
-        damage = max(0, self.atk - target.defense//3)
-        print(damage)   #debugger damage == 0 
-        target.hp -= damage
+        
+        target.hp -= int(damage)
+        print(f"{self.name} inflige {int(damage)} points de dégats à {target.name} !")
+        time.sleep(2)
         
     def is_defeated(self):
         return self.hp <= 0
-    
+        game_over()
     
     def take_turn(self, target):
         pass
@@ -97,8 +100,8 @@ class Player(Entity):
     def level_up(self):
         self.max_hp += 6
         self.hp = self.max_hp
-        self.atk += 4
-        self.defense += 3
+        self.atk += 3
+        self.defense += 2
         self.xp_until_lvlup *= 1.6
         self.level += 1
         print(f"{self.name} a monté de niveau !")
@@ -117,9 +120,9 @@ class Player(Entity):
     def show_ennemy_stats(self, monster):
         print(f"Stats de {monster.name}")
         print("-----------")
-        print(f"HP: Entre {monster.hp-random.randint(1,10)} et {monster.hp + random.randint(1, 14)}")
-        print(f"Attaque : Entre {monster.atk-random.randint(1,5)} et {monster.atk + random.randint(1, 6)}")
-        print(f"Défense : Entre {monster.defense-random.randint(1,5)} et {monster.defense + random.randint(1, 6)}")
+        print(f"HP: {monster.hp}")
+        print(f"Attaque : Entre {monster.atk-random.randint(1,4)} et {monster.atk + random.randint(1, 4)}")
+        print(f"Défense : Entre {monster.defense-random.randint(1,4)} et {monster.defense + random.randint(1, 4)}")
         
          
     def add_item(self, item):
@@ -148,18 +151,24 @@ class Player(Entity):
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
                     
-            
-            
+    def special_attack(self, target):
+        pass      
             
             
             
     def start_combat(self, target):
         print(f"Vous entrez en combat contre {target.name}")
         #Boucle tour par tour
-        while not target.is_defeated() and not self.is_defeated():
-            self.take_turn(target)
-            if not target.is_defeated():
-                target.take_turn(self)
+        flee = False
+        while flee == False:
+            while not target.is_defeated() and not self.is_defeated():
+                self.take_turn(target)
+                if not target.is_defeated():
+                    target.take_turn(self)
+            if target.is_defeated():
+                print("Vous gagnez le combat !")
+            else:
+                game_over()
                
                 
     def combat_use_item(self):
@@ -184,7 +193,6 @@ class Player(Entity):
             
                 
     def take_turn(self, target):
-        
         while True:
             print("1. Attaque simple")
             print("2. Attaque spéciale (nom a modifier)")
@@ -195,7 +203,6 @@ class Player(Entity):
             
             try:
                 action = int(input())
-                
                 if action == 1:
                     self.attack(target)
                     break
@@ -210,15 +217,19 @@ class Player(Entity):
                     
                 elif action == 4:
                     self.show_stats()
-                    break
+                    time.sleep(2)
                 
                 elif action == 5:
                     self.show_ennemy_stats(target)
-                    break
-                
+                    time.sleep(2)
                 
                 elif action == 6:
                     print("Vous avez fui le combat.")
+                    flee_chance = 0.5
+                    if random.random() > flee_chance:
+                        flee = True
+                    else:
+                        print("Vous n'avez pas réussi à fuir")
                     break
                     
                 else:
@@ -236,10 +247,10 @@ class Player(Entity):
 class Monster(Entity):
     def __init__(self, name:str):
         self.name = name
-        self.level = joueur.level+(random.randint(0,5))
+        self.level = joueur.level+(random.randint(0,2))
         self.atk = 5+self.level
-        self.defense = 6+self.level
-        self.max_hp = 15+self.level
+        self.defense = 3+self.level
+        self.max_hp = 11+self.level
         self.hp = self.max_hp
         
     def take_turn(self, target):
