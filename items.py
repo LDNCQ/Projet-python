@@ -1,4 +1,7 @@
 from entities import *
+from main import *
+from maps import *
+
 class Items:
     def __init__(self):
         pass
@@ -25,8 +28,8 @@ class AttackPotion(Consumable_Items):
 
     def use(self, player):
         player.atk += self.stat_boost
-        print(f"{player.name} a utilisé une {self.name} et a gagné {self.stat_boost} points de d'attaque.")
-
+        print(f"{player.name} a utilisé une {self.name} et a gagné {self.stat_boost} points de d'attaque pour un combat.")
+        player.used_items.append(self)
 
 class DefensePotion(Consumable_Items):
     def __init__(self):
@@ -35,7 +38,8 @@ class DefensePotion(Consumable_Items):
 
     def use(self, player):
         player.defense += self.stat_boost
-        print(f"{player.name} a utilisé une {self.name} et a gagné {self.stat_boost} points de défense.")
+        print(f"{player.name} a utilisé une {self.name} et a gagné {self.stat_boost} points de défense pour un combat.")
+        player.used_items.append(self)
 
 class DeceptionDagger(Items):
     def __init__(self):
