@@ -795,6 +795,8 @@ def deplacer(direction, position_joueur):
 historique_positions = [position_joueur.copy()]
 
 def deplacer_joueur():
+    global dans_boucle_deplacement, position_joueur, historique_positions
+
     while True:
         # Boucle de déplacement
         while dans_boucle_deplacement:
@@ -820,6 +822,10 @@ def deplacer_joueur():
             # copier la position du joueur avant le combat
             if deplacement_reussi:
                 historique_positions.append(position_joueur.copy())
+
+# Utilisation de la fonction
+deplacer_joueur()
+
 
 
                     
