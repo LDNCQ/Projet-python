@@ -11,7 +11,7 @@ carte = [
     ["Cité des Vents", "Îles des Sirens", "Canyon de l'Écho", "Ruines d'Opale", "Lac des Mystères"],
     ["Château des Lamentations", "Plaines du Mirage", "Montagnes du Crépuscule", "Vallée d'Émeraude", "Volcan de l'Ombre"]
 ]
-
+player = "test"
 # les co du spawn
 position_joueur = [2, 2]
 
