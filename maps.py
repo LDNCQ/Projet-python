@@ -125,7 +125,7 @@ def gerer_evenement(case):
             print("Vous vous préparez au combat, prêt à défendre les Montagnes du Crépuscule contre l'invasion des bandits.")
             LesBandits = Monster("Gobelins des Ombres")
             player.start_combat(LesBandits)
-            if nomdumonstre.is_defeated:
+            if LesBandits.is_defeated:
                 itemUtiliser2 = True
 
         else:
@@ -153,7 +153,7 @@ def gerer_evenement(case):
         input("Les illusions des Plaines du Mirage sont en danger, et votre présence est requise pour restaurer l'harmonie.\n..." + Fore.RESET + Style.RESET_ALL)
         OmbresSpectrales = Monster("Ombres Spectrales")
         player.start_combat(OmbresSpectrales)
-        if nomdumonstre.is_defeated:
+        if OmbresSpectrales.is_defeated:
             itemUtiliser3 = True
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
@@ -228,7 +228,7 @@ def gerer_evenement(case):
             print(Fore.MAGENTA + Style.BRIGHT +"Vous vous engagez dans la bataille contre les ennemis de feu." + Fore.RESET + Style.RESET_ALL)
             GolemDeFeu = Monster("Golem De Feu")
             player.start_combat(GolemDeFeu)
-            if nomdumonstre.is_defeated:
+            if GolemDeFeu.is_defeated:
                 itemUtiliser5 = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
@@ -268,7 +268,7 @@ def gerer_evenement(case):
             print("Les vents de la Cité reprennent leur calme, remerciant votre bravoure."+Fore.RESET + Style.RESET_ALL)
             tornado = Monster("Tornado")
             player.start_combat(tornado)
-            if nomdumonstre.is_defeated:
+            if tornado.is_defeated:
                 itemUtiliser6 = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
@@ -309,7 +309,7 @@ def gerer_evenement(case):
             print("À mesure que vous triomphez, les phalènes retrouvent leur calme, contribuant à rétablir l'harmonie dans la Forêt d'Argent."+Fore.RESET + Style.RESET_ALL)
             phalenesgeantes = Monster("Phalènes Géantes")
             player.start_combat(phalenesgeantes)
-            if nomdumonstre.is_defeated:
+            if phalenesgeantes.is_defeated:
                 foretDargent = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
@@ -347,7 +347,7 @@ def gerer_evenement(case):
             print(Fore.MAGENTA + Style.BRIGHT +"Vous décidez de faire face aux créatures de la Jungle de l'Éclipse."+Fore.RESET + Style.RESET_ALL)
             MinotauresdesTenebres = Monster("Minotaures des Ténèbres")
             player.start_combat(MinotauresdesTenebres)
-            if nomdumonstre.is_defeated:
+            if MinotauresdesTenebres.is_defeated:
                 jungleDeLeclipse = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
@@ -385,7 +385,7 @@ def gerer_evenement(case):
             print(Fore.MAGENTA + Style.BRIGHT +"Vous décidez de faire face à la tribu gardienne des Terres de Fer. "+ Fore.RESET + Style.RESET_ALL)
             latribugardienne = Monster("Da Tribu Gardienne")
             player.start_combat(latribugardienne)
-            if nomdumonstre.is_defeated:
+            if latribugardienne.is_defeated:
                 TerresDeFer = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
@@ -432,7 +432,7 @@ def gerer_evenement(case):
             print(Fore.MAGENTA + Style.BRIGHT +"Vous décidez de défier la créature du Temple des Souvenirs."+Fore.RESET + Style.RESET_ALL)
             BasilicsLunaire = Monster("Basilics Lunaire")
             player.start_combat(BasilicsLunaire)
-            if nomdumonstre.is_defeated:
+            if BasilicsLunaire.is_defeated:
                 TempleDesSouvenirs = True
             print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
         else:
@@ -737,7 +737,7 @@ def gerer_evenement(case):
 
         LeGardienduSilence = Monster(name="Le Gardien du Silence", atk=15,defense=20,max_hp=20 , hp=20)
         player.start_combat(LeGardienduSilence)
-        if nomdumonstre.is_defeated:
+        if LeGardienduSilence.is_defeated:
                 GlacierDuSilence = True
 
         # ggEZ
