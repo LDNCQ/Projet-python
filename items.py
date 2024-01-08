@@ -1,6 +1,6 @@
 from entities import *
-from main import *
-from maps import *
+# from main import *
+# from maps import *
 
 class Items:
     def __init__(self):

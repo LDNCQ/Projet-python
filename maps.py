@@ -1,7 +1,7 @@
-import simpleaudio as sa
+# import simpleaudio as sa
 from entities import *
 from colorama import Fore, Back, Style
-from items import *
+# from items import *
 
 # liste bidimensionnelle pour la map
 carte = [
@@ -11,27 +11,27 @@ carte = [
     ["Cité des Vents", "Îles des Sirens", "Canyon de l'Écho", "Ruines d'Opale", "Lac des Mystères"],
     ["Château des Lamentations", "Plaines du Mirage", "Montagnes du Crépuscule", "Vallée d'Émeraude", "Volcan de l'Ombre"]
 ]
-player = "test"
+
 # les co du spawn
 position_joueur = [2, 2]
 
 # Variable pour indiquer si le joueur est dans la boucle de déplacement
 dans_boucle_deplacement = True
 
-# Chargez la musique de fond
-background_music = sa.WaveObject.from_wave_file("backgroundMusic.wav")
+# # Chargez la musique de fond
+# background_music = sa.WaveObject.from_wave_file("backgroundMusic.wav")
 
-#pour jouer la musique de fond
-def play_background_music():
-    global background_music
-    play_obj = background_music.play()
-    return play_obj
+# #pour jouer la musique de fond
+# def play_background_music():
+#     global background_music
+#     play_obj = background_music.play()
+#     return play_obj
 
 # #pour arrêter la musique de fond
 # def stop_background_music(play_obj):
 #     play_obj.stop()
 
-play_obj = play_background_music() # play
+# play_obj = play_background_music() # play
 
 def Separe():
     print(Style.BRIGHT + "=================================================================================================================")
@@ -63,11 +63,12 @@ IlesDesSirens = False
 DesertDivoire = False
 TerresDeBrume = False
 MaraisDesOmbres = False
+GlacierDuSilence = False
 
 # pour les event aleatoire de spawn de mobs et loots
 def gerer_evenement(case):
     
-    global itemUtiliser1,TerresDeBrume, IlesDesSirens,MaraisDesOmbres, DesertDivoire, itemUtiliser2, itemUtiliser3,itemUtiliser4, itemUtiliser5, itemUtiliser6, foretDargent, jungleDeLeclipse, TerresDeFer, TempleDesSouvenirs, PorteDesEtoiles, CollinesDazur, FalaisesDuSerpent, PlageDesSonges, GrottesDelAbime, ChutesDebene, LacDesMysteres, RuinesDopale, CanyonDeLecho
+    global itemUtiliser1,TerresDeBrume, IlesDesSirens,MaraisDesOmbres, DesertDivoire, itemUtiliser2, itemUtiliser3,itemUtiliser4, itemUtiliser5, itemUtiliser6, foretDargent, jungleDeLeclipse, TerresDeFer, TempleDesSouvenirs, PorteDesEtoiles, CollinesDazur, FalaisesDuSerpent, PlageDesSonges, GrottesDelAbime, ChutesDebene, LacDesMysteres, RuinesDopale, CanyonDeLecho, GlacierDuSilence
 
     if case == "Vallée d'Émeraude" and not itemUtiliser1:
         print(Fore.MAGENTA + Style.BRIGHT + "Vous entrez dans la Vallée d'Émeraude, un sanctuaire magique caché entre les montagnes.")
@@ -735,20 +736,20 @@ def gerer_evenement(case):
         print("Le Gardien du Silence, une créature colossale aux yeux perçants, se dresse devant vous.")
         input("Les vents glacés s'intensifient, annonçant le début du combat épique pour percer les secrets du Glacier du Silence.\n..."+ Fore.RESET + Style.RESET_ALL)
 
-        LeGardienduSilence = Monster(name="Le Gardien du Silence", atk=15,defense=20,max_hp=20 , hp=20)
+        LeGardienduSilence = Boss(name="Le Gardien du Silence")
         player.start_combat(LeGardienduSilence)
         if LeGardienduSilence.is_defeated:
                 GlacierDuSilence = True
 
         # ggEZ
-        print("\nFélicitations, vaillant explorateur!")
-        print("Avec persévérance et courage, vous avez triomphé du Gardien du Silence,")
-        print("libérant les pouvoirs gelés enfouis dans le Glacier du Silence.")
-        print("Les terres mystérieuses s'étendent devant vous, dévoilant des secrets oubliés et des trésors cachés.")
-        print("Vous êtes désormais honoré comme un héros, ayant écrit une légende inoubliable dans ces contrées gelées.")
-        print("Que votre aventure continue dans d'autres mondes et que vos exploits soient chantés à travers les époques!")
-        print("\nMerci d'avoir joué au jeu. À bientôt pour de nouvelles explorations et découvertes!")
-
+                print("\nFélicitations, vaillant explorateur!")
+                print("Avec persévérance et courage, vous avez triomphé du Gardien du Silence,")
+                print("libérant les pouvoirs gelés enfouis dans le Glacier du Silence.")
+                print("Les terres mystérieuses s'étendent devant vous, dévoilant des secrets oubliés et des trésors cachés.")
+                print("Vous êtes désormais honoré comme un héros, ayant écrit une légende inoubliable dans ces contrées gelées.")
+                print("Que votre aventure continue dans d'autres mondes et que vos exploits soient chantés à travers les époques!")
+                print("\nMerci d'avoir joué au jeu. À bientôt pour de nouvelles explorations et découvertes!")
+                
 
     elif case == "Glacier du Silence" and GlacierDuSilence:
         print("\nVous ressentez une vague de prudence vous envahir.")
@@ -758,7 +759,7 @@ def gerer_evenement(case):
         print("Le mystère du Gardien du Silence reste entier, mais vous vivez pour explorer d'autres terres.")
         print(Fore.WHITE + Style.BRIGHT + "Votre aventure se poursuit. Dans quelle direction souhaitez-vous vous diriger?" + Fore.RESET + Style.RESET_ALL)
 
- # -----------------------------------------------------------------------------------------------------------------#
+# -----------------------------------------------------------------------------------------------------------------#
 
 # -----------------------------------------------------------------------------------------------------------------#    
 # Nord Est Sud Ouest

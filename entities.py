@@ -1,10 +1,7 @@
-from items import *
-from main import *
-from maps import *
 import random
 import time
 from colorama import Fore, Back, Style
-
+from items import *
 """   
     name, max_hp, hp, atk, defense, xp, xp_until_lvlup, level
     p1.max_hp, p1.hp, p1.atk, p1.defense, p1.xp, p1.xp_until_lvlup, p1.level p1.inventory
@@ -111,7 +108,7 @@ class Player(Entity):
                 
     def xp_gain(self, xp_gained):
         self.xp += int(xp_gained)
-        print("Vous avez gagné {int(xp_gained)} points d'expérience")
+        print(f"Vous avez gagné {int(xp_gained)} points d'expérience")
         while self.xp >= self.xp_until_lvlup:
             self.level_up()
                     
@@ -142,7 +139,7 @@ class Player(Entity):
                     target.is_stunned = False
                     time.sleep(1.5)
                     
-                elif self.flee == True:
+                elif self.flee:
                     break
 
                 else:
@@ -151,7 +148,7 @@ class Player(Entity):
             if target.is_defeated():
                 print("Vous gagnez le combat !")
                 target.hp = target.max_hp
-                self.xp_gain(target.lvl*1.5)
+                self.xp_gain(target.level*1.5)
                 while len(self.used_items) > 0:  
                     if self.used_items[0] == atkpotion:
                         self.atk -= 5
@@ -159,7 +156,7 @@ class Player(Entity):
                         self.defense -= 4
                     self.used_items.pop(0)
                 break
-            else:
+            if self.is_defeated():
                 while len(self.used_items) > 0:  
                     if self.used_items[0] == atkpotion:
                         self.atk -= 5
@@ -171,8 +168,8 @@ class Player(Entity):
                
                 
    
-    def is_defeated(self):
-        game_over()            
+    def is_defeated(self):      
+        return self.hp <= 0
          
     def take_turn(self, target):
         while True:
@@ -302,7 +299,8 @@ class Player(Entity):
                 print("Ce n'est pas un objet utilisable")    
                 time.sleep(2)
         
-        
+player = Player("test")   
+     
 class Monster(Entity):
     def __init__(self, name:str):
         super().__init__(name=name)
@@ -314,22 +312,37 @@ class Monster(Entity):
         
     def take_turn(self, target):
         self.attack(target)
+        pass
+
+
+class Boss(Entity):
+    def init(self, name:str, atk, defense, max_hp):
+        super().init(name=name)
+        self.level = player.level+4
+        self.atk = 15
+        self.defense = 10
+        self.max_hp = 20
+        self.hp = 20
         
-
-
-            
-
-        
-
+    def take_turn(self, target):
+        self.attack(target)
+        pass
     
-    
+def game_over():
+    print("    _____          __  __ ______    ______      ________ _____  ")
+    print("   / ____|   /\   |  \/  |  ____|  / __ \ \    / /  ____|  __ \ ")
+    print("  | |  __   /  \  | \  / | |__    | |  | \ \  / /| |__  | |__) |")
+    print("  | | |_ | / /\ \ | |\/| |  __|   | |  | |\ \/ / |  __| |  _  / ")
+    print("  | |__| |/ ____ \| |  | | |____  | |__| | \  /  | |____| | \ \ ")
+    print("   \_____/_/    \_\_|  |_|______|  \____/   \/   |______|_|  \_\ \n")
+                                                              
     
          
+player = Player("placeholder")
     
     
     
-    
-    
+
     
     
     
